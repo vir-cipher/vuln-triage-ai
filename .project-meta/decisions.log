@@ -1,0 +1,6 @@
+2026-08-04 · step-000 · Local clone path on the Surface fixed at C:\Users\sudha\ansh-projects\vuln-triage-ai (created by the grinder; recorded so every future run pulls the same working copy).
+2026-08-04 · step-000 · Plan frozen at 21 steps (phases 0-6). Spec frozen. Rule 1 in force from this commit onward.
+2026-08-04 · step-000 · Canonical ledger records commit_sha=null for step-000 in this commit (a commit cannot embed its own SHA). Next run derives the SHA from git log and patches the ledger — pre-declared here per Rule 3, so it is a reconciliation, not a drift.
+2026-08-04 · step-000 · requirements.txt is pytest-only on purpose: semgrep/requests/matplotlib join only in the step that first uses them (Rule 7 — no phantom dependencies).
+2026-08-04 · step-000 · Prior-art citation verified against primary source: arXiv:2601.22952 "Sifting the Noise" exists, submitted 30-Jan-2026, OWASP Benchmark + Java, agent frameworks (Aider/OpenHands/SWE-agent), FP >92% -> as low as 6%. Differentiation claims in spec.md checked against that abstract.
+2026-08-04 · step-000 · Target OSS projects intentionally NOT named in the frozen spec; step-001 selects them against documented criteria so the choice is itself evidence-backed.

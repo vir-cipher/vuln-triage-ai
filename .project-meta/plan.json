@@ -1,0 +1,30 @@
+{
+  "project": "p1_cyber",
+  "repo": "vir-cipher/vuln-triage-ai",
+  "frozen_on": "2026-08-04",
+  "immutable": true,
+  "_rule": "Rule 1 — read-only after bootstrap. A run may advance the pointer or raise a blocker; never re-order, redefine, or invent steps.",
+  "steps": [
+    { "id": "step-000", "phase": 0, "title": "scaffold + README + WALKTHROUGH + CI + frozen spec/plan + meta loader + tests", "gate": "repo public, README>=200w, WALKTHROUGH>=300w, CI valid, tests green, no speculation" },
+    { "id": "step-001", "phase": 1, "title": "select 5 OSS target projects with rich security-fix history; document selection criteria", "gate": "data/answer_key/targets.md lists 5 projects x (language, fix-commit density, rationale)" },
+    { "id": "step-002", "phase": 1, "title": "answer-key miner v1: git archaeology of fix commits -> data/answer_key/<project1>.json", "gate": ">=10 pre-fix vulnerable spots for project 1" },
+    { "id": "step-003", "phase": 1, "title": "answer key: project 2", "gate": ">=10 spots" },
+    { "id": "step-004", "phase": 1, "title": "answer key: project 3", "gate": ">=10 spots" },
+    { "id": "step-005", "phase": 1, "title": "answer keys: projects 4 and 5", "gate": ">=10 spots each" },
+    { "id": "step-006", "phase": 1, "title": "phase gate: totals + spot-check 3 entries via GitHub API", "gate": ">=30 spots, >=3 vuln types, 3/3 spot-checks pass" },
+    { "id": "step-007", "phase": 2, "title": "src/run_scanner.py Semgrep wrapper; scan vulnerable snapshot of project 1", "gate": "alert JSON produced deterministically" },
+    { "id": "step-008", "phase": 2, "title": "scan all 5 vulnerable snapshots -> data/alerts/", "gate": "5 alert sets present" },
+    { "id": "step-009", "phase": 2, "title": "baseline scorer: precision/recall vs answer key with +/-5-line matching -> results/baseline.json", "gate": "matching rule documented in code + docs" },
+    { "id": "step-010", "phase": 3, "title": "src/context_extractor.py: five fixed levels L0..L4", "gate": "unit tests per level" },
+    { "id": "step-011", "phase": 3, "title": "LLM triage harness (ANTHROPIC_API_KEY from env, <=10 calls/run); pilot L0 on project 1", "gate": "verdicts persisted with prompt hash; missing key = human gate" },
+    { "id": "step-012", "phase": 3, "title": "triage levels L1-L2", "gate": "verdicts persisted" },
+    { "id": "step-013", "phase": 3, "title": "triage levels L3-L4", "gate": "verdicts persisted" },
+    { "id": "step-014", "phase": 3, "title": "extend triage to >=3 projects", "gate": ">=3 projects, verdicts not uniform, cumulative spend <$5" },
+    { "id": "step-015", "phase": 3, "title": "plot accuracy vs context level -> results/context_curve.png", "gate": "curve plotted from persisted verdicts only" },
+    { "id": "step-016", "phase": 4, "title": "src/score_triage.py: precision/recall/F1 per context level", "gate": "scores identical across reruns" },
+    { "id": "step-017", "phase": 4, "title": "failure taxonomy: LONG_FUNCTION/CROSS_FILE/UNFAMILIAR_LANG/SUBTLE_FLOW/MISSING_CALLER/OTHER", "gate": ">=5 classified failures, none fabricated" },
+    { "id": "step-018", "phase": 5, "title": "docs/WALKTHROUGH.md full 9 sections", "gate": ">2000 words, every jargon term defined" },
+    { "id": "step-019", "phase": 5, "title": "final README <500w: quick-start, key finding, credits; reproducibility pass", "gate": "fresh clone + 3 commands reproduces results" },
+    { "id": "step-020", "phase": 6, "title": "publish: evidence sync to portal SPA + Ground Truth section 7", "gate": "repo public, links live" }
+  ]
+}

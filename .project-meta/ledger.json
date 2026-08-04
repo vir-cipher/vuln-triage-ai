@@ -1,0 +1,153 @@
+{
+  "_comment": "CANONICAL ledger (Rule 5). A mirror lives in OneDrive 29. IITK/project_ledger.SCHEMA.json. On any disagreement with the actual code, the CODE wins and this file is patched. Status is DERIVED from git log + CI, never asserted.",
+  "subject": "Ansh Vir Bhargav",
+  "github": "vir-cipher",
+  "semester": 1,
+  "semester_context": "Sem-1 courses: Fundamentals of Computing ESC111MC/MD (14cr), Intro Electronics (14cr), Data Engineering-Data (12cr), Lab: Malware Analysis (8cr), Practical Ethics (3cr). Classes began 30-Jul-2026. Engine builds daily (one small step per evening, alternating tracks); only pause is exam weeks (Rule 10a pacing).",
+  "github_identity_gate": {
+    "_comment": "Rule 0a - Surface is shared with Ishan (neil-cipher). Before ANY git op, run gh auth status and verify vir-cipher. Wrong account -> human_block, DIE.",
+    "expected_account": "vir-cipher",
+    "last_verified": "2026-08-04",
+    "last_verified_by": "gh auth status (vir-cipher active; sudhanshubb + neil-cipher present, inactive)"
+  },
+  "projects": {
+    "p1_cyber": {
+      "id": "s1-cyber",
+      "repo": "vir-cipher/vuln-triage-ai",
+      "title": "Context-Curve Experiment: When More Code Context Hurts LLM Vulnerability Triage",
+      "track": "cyber",
+      "spec_frozen": true,
+      "plan_immutable": true,
+      "novelty_gate_passed": true,
+      "standout_hook": "First empirical context-optimality curve - accuracy inverts beyond N lines of surrounding code (hypothesis under test, not yet a claim)",
+      "real_world_angle": "Replication + extension of 'Sifting the Noise' (arXiv:2601.22952, verified 2026-08-04); benchmark vs Semgrep AI triage baselines",
+      "prior_art_acknowledged": [
+        {
+          "title": "Sifting the Noise: A Comparative Study of LLM Agents in Vulnerability False Positive Filtering",
+          "ref": "arXiv:2601.22952",
+          "date": "2026-01-30",
+          "overlap": "LLM-based SAST FP filtering on OWASP Benchmark + Java projects using agent frameworks (Aider/OpenHands/SWE-agent); FP >92% reduced to as low as 6%"
+        },
+        {
+          "title": "Semgrep AI Triage",
+          "ref": "semgrep.dev/products/semgrep-assistant",
+          "date": "2025",
+          "overlap": "Commercial LLM triage with 95% user agreement, 20% noise reduction"
+        }
+      ],
+      "differentiation": "Context-optimality curve (unmeasured in prior art); cross-language (Python/C/JS vs Java-only); direct prompting isolates the context variable vs agent frameworks; failure taxonomy",
+      "extends_evidence": "Juice Shop admin-auth bypass write-up",
+      "plan_total_steps": 21,
+      "step_pointer": 1,
+      "last_green_tag": null,
+      "head_sha_last_seen": null,
+      "head_sha_note": "step-000 commit is HEAD; SHA patched by next run from git log (pre-declared in decisions.log, Rule 3)",
+      "ci_green_last_seen": null,
+      "start_date": "2026-08-01",
+      "target_done": "2026-09-30",
+      "build_cadence": "daily - one step per evening run, alternating tracks; no start-date gate (Rule 10a)"
+    },
+    "p2_general_cs": {
+      "id": "s1-gencs",
+      "repo": "vir-cipher/nab-anomaly-detector",
+      "title": "Streaming Anomaly Detection on the Numenta Anomaly Benchmark",
+      "track": "general_cs_python",
+      "spec_frozen": false,
+      "plan_immutable": false,
+      "novelty_gate_passed": true,
+      "standout_hook": "Hybrid EWMA + isolation-forest vs NAB published baselines with speed-accuracy tradeoff (hypothesis, not yet a claim)",
+      "real_world_angle": "Named benchmark (NAB); reproducible results comparable to Numenta's published leaderboard",
+      "prior_art_acknowledged": [
+        {
+          "title": "Numenta Anomaly Benchmark",
+          "ref": "github.com/numenta/NAB",
+          "date": "2015-ongoing",
+          "overlap": "The benchmark itself; published detector baselines"
+        }
+      ],
+      "differentiation": "Hybrid statistical (EWMA/z-score) + ML (isolation forest); speed-accuracy tradeoff analysis; Streamlit dashboard; pure Python",
+      "extends_evidence": "New territory - diversifies profile into data engineering",
+      "curriculum_alignment": "Fundamentals of Data Engineering (Data) - Sem-1",
+      "plan_total_steps": 0,
+      "step_pointer": 0,
+      "last_green_tag": null,
+      "head_sha_last_seen": null,
+      "ci_green_last_seen": null,
+      "start_date": "2026-08-15",
+      "target_done": "2026-10-31",
+      "build_cadence": "daily - one step per evening run, alternating tracks; no start-date gate (Rule 10a)"
+    }
+  },
+  "active_project": "p2_general_cs",
+  "active_project_note": "Alternating cadence: P1 step-000 shipped 2026-08-04, so the next run builds P2 (its Phase 10 bootstrap).",
+  "steps": {
+    "p1_cyber": [
+      {
+        "id": "step-000",
+        "title": "scaffold + README + WALKTHROUGH + CI + frozen spec/plan + meta loader + tests",
+        "status": "done",
+        "done_on": "2026-08-04",
+        "commit_sha": null,
+        "commit_sha_note": "the commit that introduced this file; derived from git log next run (Rule 3, pre-declared)",
+        "tests_green": true,
+        "files_touched": ["README.md", "docs/WALKTHROUGH.md", "src/__init__.py", "src/meta.py", "tests/test_scaffold.py", ".github/workflows/ci.yml", "requirements.txt", ".gitignore", ".project-meta/spec.md", ".project-meta/plan.json", ".project-meta/ledger.json", ".project-meta/decisions.log", "data/answer_key/.gitkeep", "results/.gitkeep"],
+        "layman_note": {
+          "what": "Built the project's skeleton: folders, a plain-English README, a walkthrough doc, auto-running tests (CI), and a frozen 21-step plan.",
+          "why": "Every later step needs a green, tested base to stand on - and a frozen plan means no scope drift, ever.",
+          "concept": "CI (continuous integration): a robot reruns your tests on every push, so breakage is caught the day it happens.",
+          "next": "Pick the 5 open-source projects whose real security-fix history becomes our answer key."
+        },
+        "claim": "Prior art baseline: LLM agents cut SAST false positives from >92% to as low as 6% on OWASP Benchmark (Java)",
+        "claim_source_url": "https://arxiv.org/abs/2601.22952",
+        "claim_verified": true
+      }
+    ],
+    "p2_general_cs": [
+      {
+        "id": "step-000",
+        "title": "scaffold + README + CI",
+        "status": "derive_from_git",
+        "commit_sha": null,
+        "tests_green": null,
+        "files_touched": [],
+        "layman_note": { "what": "", "why": "", "concept": "", "next": "" },
+        "claim": null,
+        "claim_source_url": null,
+        "claim_verified": null
+      }
+    ]
+  },
+  "human_block": {
+    "active": false,
+    "step_id": null,
+    "instruction_to_human": "(cleared) Both repos exist as vir-cipher. Engine builds daily. Re-raises only on a real credential/OAuth/account-switch wall.",
+    "raised_on": "2026-07-27",
+    "cleared_on": "2026-07-28",
+    "cleared_by_human": true
+  },
+  "reconciliation_log": [
+    {
+      "date": "2026-08-04",
+      "ledger_said": "repos empty, step-000 pending, active_project p1_cyber",
+      "code_was": "both repos confirmed empty via GitHub API (409 on commits) - ledger matched reality",
+      "action": "no patch needed; executed step-000 bootstrap; pointer 0->1; active project flipped to p2_general_cs for alternation"
+    }
+  ],
+  "invariants_last_run": {
+    "github_identity_ok": true,
+    "no_regression": true,
+    "builds_clean": true,
+    "claim_sourced": true,
+    "author_is_vir_cipher": true,
+    "all_passed": true
+  },
+  "log": [
+    {
+      "date": "2026-08-04",
+      "run": 7,
+      "outcome": "STEP_DONE",
+      "detail": "P1 step-000 (Phase 0 bootstrap) shipped: scaffold, README (>=200w), WALKTHROUGH (>=300w), CI, frozen spec + 21-step plan, meta loader, 8 tests green locally. Prior-art citation verified against arXiv:2601.22952. Next run: P2 bootstrap (alternation)."
+    }
+  ],
+  "design_law_ref": "29. IITK/Ansh_Project_Explainer.md -> DESIGN LAW (bullets-only, term collapsibles, guarantee->quandary->solve, real commands, no date-gating). Constitution Rule 10a."
+}
