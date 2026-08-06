@@ -4,3 +4,9 @@
 2026-08-04 · step-000 · requirements.txt is pytest-only on purpose: semgrep/requests/matplotlib join only in the step that first uses them (Rule 7 — no phantom dependencies).
 2026-08-04 · step-000 · Prior-art citation verified against primary source: arXiv:2601.22952 "Sifting the Noise" exists, submitted 30-Jan-2026, OWASP Benchmark + Java, agent frameworks (Aider/OpenHands/SWE-agent), FP >92% -> as low as 6%. Differentiation claims in spec.md checked against that abstract.
 2026-08-04 · step-000 · Target OSS projects intentionally NOT named in the frozen spec; step-001 selects them against documented criteria so the choice is itself evidence-backed.
+
+2026-08-06 · step-001 · Reconciled in-repo ledger: patched P1 step-000 commit_sha from null to 94a0fd9 (pre-declared in decisions.log 2026-08-04, Rule 3). Synced P2 step-000 from mirror (bfb3082, done 2026-08-06).
+2026-08-06 · step-001 · Selected 5 target projects: Django (Python), curl (C), OpenSSL (C), Pillow (Python+C), Node.js (JavaScript). Selection criteria documented in data/answer_key/targets.md. Cross-language differentiation from Java-only prior art (arXiv:2601.22952).
+2026-08-06 · step-001 · CVE counts verified via primary sources: Django 100+ (docs.djangoproject.com/en/6.0/releases/security/), curl 200+ (curl.se/docs/security.html), OpenSSL 70+ (openssl-library.org/news/vulnerabilities/), Pillow 20+ (cvedetails.com), Node.js multiple security releases per year (nodejs.org/en/blog/vulnerability/).
+2026-08-06 · step-001 · New term for glossary: git archaeology — mining a project's commit history to find where vulnerabilities were introduced and later fixed, creating ground truth to measure against.
+2026-08-06 · step-001 · Step-001 commit_sha=null (same pre-declaration as step-000: a commit cannot embed its own SHA). Next run patches via git log.

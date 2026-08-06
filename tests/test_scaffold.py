@@ -33,7 +33,6 @@ def test_plan_is_frozen_and_ordered():
     phases = [s["phase"] for s in plan["steps"]]
     assert phases == sorted(phases)
 
-
 def test_ledger_parses_and_knows_step_000():
     ledger = json.loads((ROOT / ".project-meta/ledger.json").read_text(encoding="utf-8"))
     steps = {s["id"]: s for s in ledger["steps"]["p1_cyber"]}
@@ -51,7 +50,10 @@ def test_meta_loader_reads_frozen_plan():
 
     assert load_plan()["project"] == "p1_cyber"
     assert load_ledger()["github"] == "vir-cipher"
-    assert current_step()["id"] == "step-001"
+    # current_step() returns the NEXT step to execute (step_pointer indexes plan)
+    step = current_step()
+    pointer = load_ledger()["projects"]["p1_cyber"]["step_pointer"]
+    assert step["id"] == f"step-{pointer:03d}"
 
 
 def test_ci_workflow_runs_pytest():

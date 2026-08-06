@@ -1,13 +1,13 @@
 {
-  "_comment": "CANONICAL ledger (Rule 5). A mirror lives in OneDrive 29. IITK/project_ledger.SCHEMA.json. On any disagreement with the actual code, the CODE wins and this file is patched. Status is DERIVED from git log + CI, never asserted.",
+  "_comment": "CANONICAL ledger (Rule 5). Mirror: OneDrive 29. IITK/project_ledger.SCHEMA.json. On conflict CODE wins.",
   "subject": "Ansh Vir Bhargav",
   "github": "vir-cipher",
   "semester": 1,
-  "semester_context": "Sem-1 courses: Fundamentals of Computing ESC111MC/MD (14cr), Intro Electronics (14cr), Data Engineering-Data (12cr), Lab: Malware Analysis (8cr), Practical Ethics (3cr). Classes began 30-Jul-2026. Engine builds daily (one small step per evening, alternating tracks); only pause is exam weeks (Rule 10a pacing).",
+  "semester_context": "Sem-1 courses: Fundamentals of Computing ESC111MC/MD (14cr), Intro Electronics (14cr), Data Engineering-Data (12cr), Lab: Malware Analysis (8cr), Practical Ethics (3cr). Classes began 30-Jul-2026. Engine builds daily.",
   "github_identity_gate": {
-    "_comment": "Rule 0a - Surface is shared with Ishan (neil-cipher). Before ANY git op, run gh auth status and verify vir-cipher. Wrong account -> human_block, DIE.",
+    "_comment": "Rule 0a",
     "expected_account": "vir-cipher",
-    "last_verified": "2026-08-04",
+    "last_verified": "2026-08-06",
     "last_verified_by": "gh auth status (vir-cipher active; sudhanshubb + neil-cipher present, inactive)"
   },
   "projects": {
@@ -19,119 +19,92 @@
       "spec_frozen": true,
       "plan_immutable": true,
       "novelty_gate_passed": true,
-      "standout_hook": "First empirical context-optimality curve - accuracy inverts beyond N lines of surrounding code (hypothesis under test, not yet a claim)",
-      "real_world_angle": "Replication + extension of 'Sifting the Noise' (arXiv:2601.22952, verified 2026-08-04); benchmark vs Semgrep AI triage baselines",
-      "prior_art_acknowledged": [
-        {
-          "title": "Sifting the Noise: A Comparative Study of LLM Agents in Vulnerability False Positive Filtering",
-          "ref": "arXiv:2601.22952",
-          "date": "2026-01-30",
-          "overlap": "LLM-based SAST FP filtering on OWASP Benchmark + Java projects using agent frameworks (Aider/OpenHands/SWE-agent); FP >92% reduced to as low as 6%"
-        },
-        {
-          "title": "Semgrep AI Triage",
-          "ref": "semgrep.dev/products/semgrep-assistant",
-          "date": "2025",
-          "overlap": "Commercial LLM triage with 95% user agreement, 20% noise reduction"
-        }
-      ],
-      "differentiation": "Context-optimality curve (unmeasured in prior art); cross-language (Python/C/JS vs Java-only); direct prompting isolates the context variable vs agent frameworks; failure taxonomy",
-      "extends_evidence": "Juice Shop admin-auth bypass write-up",
+      "standout_hook": "First empirical context-optimality curve (hypothesis under test)",
       "plan_total_steps": 21,
-      "step_pointer": 1,
-      "last_green_tag": null,
-      "head_sha_last_seen": null,
-      "head_sha_note": "step-000 commit is HEAD; SHA patched by next run from git log (pre-declared in decisions.log, Rule 3)",
-      "ci_green_last_seen": null,
-      "start_date": "2026-08-01",
-      "target_done": "2026-09-30",
-      "build_cadence": "daily - one step per evening run, alternating tracks; no start-date gate (Rule 10a)"
+      "step_pointer": 2,
+      "last_green_tag": null,      "head_sha_last_seen": "94a0fd9ffe1db500d305fd28b2b4b2dc5114da56",
+      "ci_green_last_seen": "2026-08-06",
+      "build_cadence": "daily"
     },
     "p2_general_cs": {
       "id": "s1-gencs",
       "repo": "vir-cipher/nab-anomaly-detector",
       "title": "Streaming Anomaly Detection on the Numenta Anomaly Benchmark",
       "track": "general_cs_python",
-      "spec_frozen": false,
-      "plan_immutable": false,
+      "spec_frozen": true,
+      "plan_immutable": true,
       "novelty_gate_passed": true,
-      "standout_hook": "Hybrid EWMA + isolation-forest vs NAB published baselines with speed-accuracy tradeoff (hypothesis, not yet a claim)",
-      "real_world_angle": "Named benchmark (NAB); reproducible results comparable to Numenta's published leaderboard",
-      "prior_art_acknowledged": [
-        {
-          "title": "Numenta Anomaly Benchmark",
-          "ref": "github.com/numenta/NAB",
-          "date": "2015-ongoing",
-          "overlap": "The benchmark itself; published detector baselines"
-        }
-      ],
-      "differentiation": "Hybrid statistical (EWMA/z-score) + ML (isolation forest); speed-accuracy tradeoff analysis; Streamlit dashboard; pure Python",
-      "extends_evidence": "New territory - diversifies profile into data engineering",
-      "curriculum_alignment": "Fundamentals of Data Engineering (Data) - Sem-1",
-      "plan_total_steps": 0,
-      "step_pointer": 0,
+      "plan_total_steps": 21,
+      "step_pointer": 1,
       "last_green_tag": null,
-      "head_sha_last_seen": null,
-      "ci_green_last_seen": null,
-      "start_date": "2026-08-15",
-      "target_done": "2026-10-31",
-      "build_cadence": "daily - one step per evening run, alternating tracks; no start-date gate (Rule 10a)"
+      "head_sha_last_seen": "bfb30824d308e198b1fc0250767d77ced5984a06",
+      "ci_green_last_seen": "2026-08-06",
+      "build_cadence": "daily"
     }
   },
   "active_project": "p2_general_cs",
-  "active_project_note": "Alternating cadence: P1 step-000 shipped 2026-08-04, so the next run builds P2 (its Phase 10 bootstrap).",
+  "active_project_note": "P1 step-001 shipped 2026-08-06; next run builds P2 step-001 (download NAB dataset).",
   "steps": {
     "p1_cyber": [
       {
         "id": "step-000",
         "title": "scaffold + README + WALKTHROUGH + CI + frozen spec/plan + meta loader + tests",
-        "status": "done",
-        "done_on": "2026-08-04",
-        "commit_sha": null,
-        "commit_sha_note": "the commit that introduced this file; derived from git log next run (Rule 3, pre-declared)",
+        "status": "done",        "done_on": "2026-08-04",
+        "commit_sha": "94a0fd9ffe1db500d305fd28b2b4b2dc5114da56",
         "tests_green": true,
         "files_touched": ["README.md", "docs/WALKTHROUGH.md", "src/__init__.py", "src/meta.py", "tests/test_scaffold.py", ".github/workflows/ci.yml", "requirements.txt", ".gitignore", ".project-meta/spec.md", ".project-meta/plan.json", ".project-meta/ledger.json", ".project-meta/decisions.log", "data/answer_key/.gitkeep", "results/.gitkeep"],
         "layman_note": {
-          "what": "Built the project's skeleton: folders, a plain-English README, a walkthrough doc, auto-running tests (CI), and a frozen 21-step plan.",
-          "why": "Every later step needs a green, tested base to stand on - and a frozen plan means no scope drift, ever.",
-          "concept": "CI (continuous integration): a robot reruns your tests on every push, so breakage is caught the day it happens.",
-          "next": "Pick the 5 open-source projects whose real security-fix history becomes our answer key."
-        },
-        "claim": "Prior art baseline: LLM agents cut SAST false positives from >92% to as low as 6% on OWASP Benchmark (Java)",
-        "claim_source_url": "https://arxiv.org/abs/2601.22952",
-        "claim_verified": true
+          "what": "Built the project skeleton: folders, README, walkthrough, CI, frozen 21-step plan.",
+          "why": "Every later step needs a green, tested base — frozen plan means no scope drift.",
+          "concept": "CI: a robot reruns your tests on every push so breakage is caught immediately.",
+          "next": "Pick the 5 open-source projects whose security-fix history becomes our answer key."
+        }
+      },
+      {
+        "id": "step-001",
+        "title": "select 5 OSS target projects with rich security-fix history; document selection criteria",
+        "status": "done",
+        "done_on": "2026-08-06",
+        "commit_sha": null,
+        "commit_sha_note": "SHA derived from git log next run (commit includes this file)",
+        "tests_green": true,
+        "files_touched": ["data/answer_key/targets.md", "tests/test_answer_key.py", ".project-meta/ledger.json", ".project-meta/decisions.log"],
+        "layman_note": {
+          "what": "Selected 5 OSS projects (Django, curl, OpenSSL, Pillow, Node.js) across Python, C, and JavaScript for the vulnerability triage experiment.",
+          "why": "These projects have rich, documented security-fix histories — the raw material for building the answer key that measures our AI triage accuracy.",
+          "concept": "Git archaeology — mining a project's commit history to find where vulnerabilities were introduced and later fixed, creating ground truth to test against.",
+          "next": "Mine Django's git history for >=10 pre-fix vulnerable code locations (the first answer-key entry)."
+        }
       }
-    ],
-    "p2_general_cs": [
+    ],    "p2_general_cs": [
       {
         "id": "step-000",
-        "title": "scaffold + README + CI",
-        "status": "derive_from_git",
-        "commit_sha": null,
-        "tests_green": null,
-        "files_touched": [],
-        "layman_note": { "what": "", "why": "", "concept": "", "next": "" },
-        "claim": null,
-        "claim_source_url": null,
-        "claim_verified": null
+        "title": "scaffold + README + WALKTHROUGH + CI + frozen spec/plan + tests",
+        "status": "done",
+        "done_on": "2026-08-06",
+        "commit_sha": "bfb30824d308e198b1fc0250767d77ced5984a06",
+        "tests_green": true,
+        "files_touched": ["README.md", "docs/WALKTHROUGH.md", "src/__init__.py", "src/meta.py", "tests/test_scaffold.py", ".github/workflows/ci.yml", "requirements.txt", ".gitignore", ".project-meta/spec.md", ".project-meta/plan.json", ".project-meta/ledger.json", ".project-meta/decisions.log", "data/.gitkeep", "results/.gitkeep"],
+        "layman_note": {
+          "what": "Built the project skeleton: folders, README, walkthrough, 10 tests green, CI, frozen 21-step plan.",
+          "why": "Same principle as Track A — start green, stay green.",
+          "concept": "Scaffold — the empty-but-working skeleton built before any real logic.",
+          "next": "Download the NAB dataset (58 CSV files across 7 categories) and document what is inside."
+        }
       }
     ]
   },
   "human_block": {
     "active": false,
     "step_id": null,
-    "instruction_to_human": "(cleared) Both repos exist as vir-cipher. Engine builds daily. Re-raises only on a real credential/OAuth/account-switch wall.",
-    "raised_on": "2026-07-27",
-    "cleared_on": "2026-07-28",
-    "cleared_by_human": true
+    "instruction_to_human": "(cleared)"
   },
   "reconciliation_log": [
     {
-      "date": "2026-08-04",
-      "ledger_said": "repos empty, step-000 pending, active_project p1_cyber",
-      "code_was": "both repos confirmed empty via GitHub API (409 on commits) - ledger matched reality",
-      "action": "no patch needed; executed step-000 bootstrap; pointer 0->1; active project flipped to p2_general_cs for alternation"
-    }
+      "date": "2026-08-06",
+      "ledger_said": "P1 step-000 commit_sha null, P2 stale (derive_from_git), active_project p2_general_cs",
+      "code_was": "P1 HEAD at 94a0fd9 (matches mirror), P2 HEAD at bfb3082 (matches mirror)",
+      "action": "Patched P1 commit_sha to 94a0fd9, synced P2 step-000 from mirror (bfb3082 done). Executed step-001. Flipped active to p2_general_cs for alternation."    }
   ],
   "invariants_last_run": {
     "github_identity_ok": true,
@@ -146,8 +119,13 @@
       "date": "2026-08-04",
       "run": 7,
       "outcome": "STEP_DONE",
-      "detail": "P1 step-000 (Phase 0 bootstrap) shipped: scaffold, README (>=200w), WALKTHROUGH (>=300w), CI, frozen spec + 21-step plan, meta loader, 8 tests green locally. Prior-art citation verified against arXiv:2601.22952. Next run: P2 bootstrap (alternation)."
+      "detail": "P1 step-000 bootstrap shipped: commit 94a0fd9."
+    },
+    {
+      "date": "2026-08-06",
+      "run": 9,
+      "outcome": "STEP_DONE",
+      "detail": "P1 step-001: selected 5 OSS targets (Django, curl, OpenSSL, Pillow, Node.js) in data/answer_key/targets.md. 5 new tests added (test_answer_key.py). 13/13 green. Reconciled in-repo ledger (patched P1 SHA, synced P2 step-000). Next: P2 step-001 (download NAB dataset)."
     }
-  ],
-  "design_law_ref": "29. IITK/Ansh_Project_Explainer.md -> DESIGN LAW (bullets-only, term collapsibles, guarantee->quandary->solve, real commands, no date-gating). Constitution Rule 10a."
+  ]
 }
