@@ -1,0 +1,259 @@
+{
+  "project": "django",
+  "repo": "django/django",
+  "total_spots": 19,
+  "total_cves": 12,
+  "entries": [
+    {
+      "cve_id": "CVE-2026-15307",
+      "description": "Server-side file-write and request forgery via spatial lookups",
+      "vuln_type": "SSRF / file write",
+      "cwe_id": "CWE-918",
+      "severity": "high",
+      "fix_commit_sha": "39b3e2d0c743a338def6c473086ebc06865e86b6",
+      "parent_commit_sha": "370a6e2db02a17a7be45f93670bb1410c3dcb981",
+      "repo": "django/django",
+      "vulnerable_files": [
+        {
+          "file": "django/contrib/gis/db/models/fields.py",
+          "additions": 26,
+          "deletions": 11
+        },
+        {
+          "file": "django/contrib/gis/gdal/raster/source.py",
+          "additions": 40,
+          "deletions": 6
+        }
+      ],
+      "primary_source": "https://docs.djangoproject.com/en/6.0/releases/security/"
+    },
+    {
+      "cve_id": "CVE-2026-15920",
+      "description": "Cross-site scripting via URLField values in the admin",
+      "vuln_type": "XSS",
+      "cwe_id": "CWE-79",
+      "severity": "moderate",
+      "fix_commit_sha": "5a260d309a4c8010c2ebda24eb758a5d95e2508a",
+      "parent_commit_sha": "9e4a3f186b6b07b483bfd9195ea06734663fcd06",
+      "repo": "django/django",
+      "vulnerable_files": [
+        {
+          "file": "django/contrib/admin/utils.py",
+          "additions": 10,
+          "deletions": 2
+        }
+      ],
+      "primary_source": "https://docs.djangoproject.com/en/6.0/releases/security/"
+    },
+    {
+      "cve_id": "CVE-2026-53878",
+      "description": "Header injection via DomainNameValidator accepting newlines",
+      "vuln_type": "header injection",
+      "cwe_id": "CWE-113",
+      "severity": "moderate",
+      "fix_commit_sha": "fe3e8a0de7fad7897fa4917013d8abd507e4d756",
+      "parent_commit_sha": "a46b417d9e441379e7f86933ec1b2fb05f63d492",
+      "repo": "django/django",
+      "vulnerable_files": [
+        {
+          "file": "django/core/validators.py",
+          "additions": 14,
+          "deletions": 14
+        }
+      ],
+      "primary_source": "https://docs.djangoproject.com/en/6.0/releases/security/"
+    },
+    {
+      "cve_id": "CVE-2026-1207",
+      "description": "SQL injection via raster lookups on PostGIS",
+      "vuln_type": "SQL injection",
+      "cwe_id": "CWE-89",
+      "severity": "high",
+      "fix_commit_sha": "8f77e7301174834573614ae90e1826fdf27f8a24",
+      "parent_commit_sha": "972dbdd4f7f69e9c405e6fe12a1b90e4713c1611",
+      "repo": "django/django",
+      "vulnerable_files": [
+        {
+          "file": "django/contrib/gis/db/backends/postgis/operations.py",
+          "additions": 6,
+          "deletions": 0
+        }
+      ],
+      "primary_source": "https://docs.djangoproject.com/en/6.0/releases/security/"
+    },
+    {
+      "cve_id": "CVE-2026-3902",
+      "description": "ASGI header spoofing via underscore/hyphen conflation",
+      "vuln_type": "header spoofing",
+      "cwe_id": "CWE-436",
+      "severity": "moderate",
+      "fix_commit_sha": "a623c3982857e80324448f85c7faf9a6710330ef",
+      "parent_commit_sha": "ffc83c554a7bc99e138445fa2c4beaf0ca17c71c",
+      "repo": "django/django",
+      "vulnerable_files": [
+        {
+          "file": "django/core/handlers/asgi.py",
+          "additions": 3,
+          "deletions": 0
+        },
+        {
+          "file": "django/test/client.py",
+          "additions": 4,
+          "deletions": 1
+        }
+      ],
+      "primary_source": "https://docs.djangoproject.com/en/6.0/releases/security/"
+    },
+    {
+      "cve_id": "CVE-2026-4277",
+      "description": "Privilege abuse in GenericInlineModelAdmin",
+      "vuln_type": "authorization bypass",
+      "cwe_id": "CWE-863",
+      "severity": "moderate",
+      "fix_commit_sha": "08a752c1cd8f378b4c64d96c319da23726df6ed3",
+      "parent_commit_sha": "a623c3982857e80324448f85c7faf9a6710330ef",
+      "repo": "django/django",
+      "vulnerable_files": [
+        {
+          "file": "django/contrib/contenttypes/admin.py",
+          "additions": 15,
+          "deletions": 0
+        }
+      ],
+      "primary_source": "https://docs.djangoproject.com/en/6.0/releases/security/"
+    },
+    {
+      "cve_id": "CVE-2026-33033",
+      "description": "DoS in MultiPartParser via base64-encoded file upload",
+      "vuln_type": "denial of service",
+      "cwe_id": "CWE-400",
+      "severity": "moderate",
+      "fix_commit_sha": "0910af60468216c856dfbcac1177372c225deb76",
+      "parent_commit_sha": "428c48f358c5a0ed5ca2834fb721d615eb2b0e11",
+      "repo": "django/django",
+      "vulnerable_files": [
+        {
+          "file": "django/http/multipartparser.py",
+          "additions": 9,
+          "deletions": 6
+        }
+      ],
+      "primary_source": "https://docs.djangoproject.com/en/6.0/releases/security/"
+    },
+    {
+      "cve_id": "CVE-2025-13473",
+      "description": "Username enumeration via timing difference in mod_wsgi auth handler",
+      "vuln_type": "information disclosure (timing)",
+      "cwe_id": "CWE-208",
+      "severity": "moderate",
+      "fix_commit_sha": "d72cc3be3be0bbebdcaea5a8c8106b4d6f2a32bd",
+      "parent_commit_sha": "d64ef2429f43cc69a9d5f491650734bb3c51c21d",
+      "repo": "django/django",
+      "vulnerable_files": [
+        {
+          "file": "django/contrib/auth/handlers/modwsgi.py",
+          "additions": 30,
+          "deletions": 7
+        }
+      ],
+      "primary_source": "https://docs.djangoproject.com/en/6.0/releases/security/"
+    },
+    {
+      "cve_id": "CVE-2026-35192",
+      "description": "Session fixation via public cached pages and SESSION_SAVE_EVERY_REQUEST",
+      "vuln_type": "session fixation",
+      "cwe_id": "CWE-384",
+      "severity": "moderate",
+      "fix_commit_sha": "1b0184aa657bc3f5859aeb0206e7c1e94e48b103",
+      "parent_commit_sha": "ad8f9e19e0897ea45ded7c046ff28daf6f773e92",
+      "repo": "django/django",
+      "vulnerable_files": [
+        {
+          "file": "django/contrib/sessions/middleware.py",
+          "additions": 8,
+          "deletions": 3
+        }
+      ],
+      "primary_source": "https://docs.djangoproject.com/en/6.0/releases/security/"
+    },
+    {
+      "cve_id": "CVE-2026-6873",
+      "description": "Signed cookie salt namespace collision in get_signed_cookie",
+      "vuln_type": "authentication weakness",
+      "cwe_id": "CWE-345",
+      "severity": "moderate",
+      "fix_commit_sha": "42bdfd74ff85eb9ddf8fd444e2359afd9add59c8",
+      "parent_commit_sha": "fcbbb1f920f7a7efb16a9871e8905b743447a939",
+      "repo": "django/django",
+      "vulnerable_files": [
+        {
+          "file": "django/conf/global_settings.py",
+          "additions": 1,
+          "deletions": 0
+        },
+        {
+          "file": "django/core/signing.py",
+          "additions": 24,
+          "deletions": 0
+        },
+        {
+          "file": "django/http/request.py",
+          "additions": 2,
+          "deletions": 2
+        },
+        {
+          "file": "django/http/response.py",
+          "additions": 3,
+          "deletions": 1
+        }
+      ],
+      "primary_source": "https://docs.djangoproject.com/en/6.0/releases/security/"
+    },
+    {
+      "cve_id": "CVE-2026-5766",
+      "description": "DoS in ASGI requests via file upload limit bypass",
+      "vuln_type": "denial of service",
+      "cwe_id": "CWE-770",
+      "severity": "moderate",
+      "fix_commit_sha": "ad8f9e19e0897ea45ded7c046ff28daf6f773e92",
+      "parent_commit_sha": "990ab01e70fd8f55e867b4a234c0ee242fd33fec",
+      "repo": "django/django",
+      "vulnerable_files": [
+        {
+          "file": "django/core/files/uploadhandler.py",
+          "additions": 18,
+          "deletions": 3
+        }
+      ],
+      "primary_source": "https://docs.djangoproject.com/en/6.0/releases/security/"
+    },
+    {
+      "cve_id": "CVE-2026-25674",
+      "description": "Incorrect permissions on newly created file system objects",
+      "vuln_type": "permission assignment",
+      "cwe_id": "CWE-732",
+      "severity": "moderate",
+      "fix_commit_sha": "264d5c70ef3281a8869cb2ad45a3a52d5adbe790",
+      "parent_commit_sha": "b1444d9acf43db9de96e0da2b4737ad56af0eb76",
+      "repo": "django/django",
+      "vulnerable_files": [
+        {
+          "file": "django/core/cache/backends/filebased.py",
+          "additions": 4,
+          "deletions": 6
+        },
+        {
+          "file": "django/core/files/storage/filesystem.py",
+          "additions": 4,
+          "deletions": 9
+        },
+        {
+          "file": "django/utils/_os.py",
+          "additions": 57,
+          "deletions": 1
+        }
+      ],
+      "primary_source": "https://docs.djangoproject.com/en/6.0/releases/security/"
+    }
+  ]
+}
