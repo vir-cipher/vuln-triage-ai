@@ -7,8 +7,8 @@
   "github_identity_gate": {
     "_comment": "Rule 0a",
     "expected_account": "vir-cipher",
-    "last_verified": "2026-08-08",
-    "last_verified_by": "gh auth status (vir-cipher active; sudhanshubb + neil-cipher present, inactive)"
+    "last_verified": "2026-08-12",
+    "last_verified_by": "gh auth status (vir-cipher active)"
   },
   "projects": {
     "p1_cyber": {
@@ -21,10 +21,11 @@
       "novelty_gate_passed": true,
       "standout_hook": "First empirical context-optimality curve (hypothesis under test)",
       "plan_total_steps": 21,
-      "step_pointer": 3,
+      "step_pointer": 4,
       "last_green_tag": null,
-      "ci_green_last_seen": "2026-08-08",
-      "build_cadence": "daily"
+      "ci_green_last_seen": "2026-08-12",
+      "build_cadence": "daily",
+      "head_sha_last_seen": "64458a4"
     },
     "p2_general_cs": {
       "id": "s1-gencs",
@@ -43,7 +44,7 @@
     }
   },
   "active_project": "p2_general_cs",
-  "active_project_note": "P1 step-002 shipped 2026-08-08; next run builds P2 step-002 (NAB scoring protocol).",
+  "active_project_note": "P1 step-003 shipped 2026-08-12; next run builds P2 step-003.",
   "steps": {
     "p1_cyber": [
       {
@@ -53,7 +54,22 @@
         "done_on": "2026-08-04",
         "commit_sha": "94a0fd9ffe1db500d305fd28b2b4b2dc5114da56",
         "tests_green": true,
-        "files_touched": ["README.md", "docs/WALKTHROUGH.md", "src/__init__.py", "src/meta.py", "tests/test_scaffold.py", ".github/workflows/ci.yml", "requirements.txt", ".gitignore", ".project-meta/spec.md", ".project-meta/plan.json", ".project-meta/ledger.json", ".project-meta/decisions.log", "data/answer_key/.gitkeep", "results/.gitkeep"],
+        "files_touched": [
+          "README.md",
+          "docs/WALKTHROUGH.md",
+          "src/__init__.py",
+          "src/meta.py",
+          "tests/test_scaffold.py",
+          ".github/workflows/ci.yml",
+          "requirements.txt",
+          ".gitignore",
+          ".project-meta/spec.md",
+          ".project-meta/plan.json",
+          ".project-meta/ledger.json",
+          ".project-meta/decisions.log",
+          "data/answer_key/.gitkeep",
+          "results/.gitkeep"
+        ],
         "layman_note": {
           "what": "Built the project skeleton: folders, README, walkthrough, CI, frozen 21-step plan.",
           "why": "Every later step needs a green, tested base — frozen plan means no scope drift.",
@@ -68,7 +84,12 @@
         "done_on": "2026-08-06",
         "commit_sha": "b60d68e",
         "tests_green": true,
-        "files_touched": ["data/answer_key/targets.md", "tests/test_answer_key.py", ".project-meta/ledger.json", ".project-meta/decisions.log"],
+        "files_touched": [
+          "data/answer_key/targets.md",
+          "tests/test_answer_key.py",
+          ".project-meta/ledger.json",
+          ".project-meta/decisions.log"
+        ],
         "layman_note": {
           "what": "Selected 5 OSS projects (Django, curl, OpenSSL, Pillow, Node.js) across Python, C, and JavaScript.",
           "why": "These projects have rich, documented security-fix histories — the raw material for building the answer key.",
@@ -84,12 +105,38 @@
         "commit_sha": null,
         "commit_sha_note": "SHA derived from git log next run (commit includes this file)",
         "tests_green": true,
-        "files_touched": ["src/answer_key_miner.py", "data/answer_key/django_seeds.json", "data/answer_key/django.json", "tests/test_answer_key.py", ".project-meta/ledger.json", ".project-meta/decisions.log"],
+        "files_touched": [
+          "src/answer_key_miner.py",
+          "data/answer_key/django_seeds.json",
+          "data/answer_key/django.json",
+          "tests/test_answer_key.py",
+          ".project-meta/ledger.json",
+          ".project-meta/decisions.log"
+        ],
         "layman_note": {
           "what": "Built a reusable miner script and produced Django's answer key: 12 CVEs, 19 vulnerable file locations across 12 distinct CWE types.",
           "why": "The answer key is ground truth — without known-correct answers, there's no way to measure how accurately the AI triages alerts.",
           "concept": "Git archaeology via API — instead of cloning Django's 30k-commit repo, query GitHub's API for each fix commit's diff to find exactly which source files were patched.",
           "next": "Mine curl's git history for >=10 pre-fix vulnerable spots (second answer-key entry)."
+        }
+      },
+      {
+        "id": "step-003",
+        "title": "answer key: curl (project 2)",
+        "status": "done",
+        "done_on": "2026-08-12",
+        "commit_sha": "64458a4",
+        "tests_green": true,
+        "files_touched": [
+          "data/answer_key/curl_seeds.json",
+          "data/answer_key/curl.json",
+          "tests/test_answer_key.py"
+        ],
+        "layman_note": {
+          "what": "Mined 15 real CVEs from curl; 12 had code-level fixes, producing 24 vulnerable spots across 8 CWE types.",
+          "why": "curl is project 2 of 5. C memory bugs (UAF, double-free) are the classic triage-hard pattern.",
+          "concept": "Use-after-free (CWE-416): code accesses memory after it was freed. Classic C bug prevented by higher-level languages.",
+          "next": "Mine OpenSSL (project 3) for more C memory + crypto logic bugs."
         }
       }
     ],
@@ -101,7 +148,22 @@
         "done_on": "2026-08-06",
         "commit_sha": "bfb30824d308e198b1fc0250767d77ced5984a06",
         "tests_green": true,
-        "files_touched": ["README.md", "docs/WALKTHROUGH.md", "src/__init__.py", "src/meta.py", "tests/test_scaffold.py", ".github/workflows/ci.yml", "requirements.txt", ".gitignore", ".project-meta/spec.md", ".project-meta/plan.json", ".project-meta/ledger.json", ".project-meta/decisions.log", "data/.gitkeep", "results/.gitkeep"],
+        "files_touched": [
+          "README.md",
+          "docs/WALKTHROUGH.md",
+          "src/__init__.py",
+          "src/meta.py",
+          "tests/test_scaffold.py",
+          ".github/workflows/ci.yml",
+          "requirements.txt",
+          ".gitignore",
+          ".project-meta/spec.md",
+          ".project-meta/plan.json",
+          ".project-meta/ledger.json",
+          ".project-meta/decisions.log",
+          "data/.gitkeep",
+          "results/.gitkeep"
+        ],
         "layman_note": {
           "what": "Built the project skeleton: folders, README, walkthrough, 10 tests green, CI, frozen 21-step plan.",
           "why": "Same principle as Track A — start green, stay green.",
@@ -116,7 +178,15 @@
         "done_on": "2026-08-07",
         "commit_sha": "74b7991",
         "tests_green": true,
-        "files_touched": ["src/download_nab.py", "tests/test_nab_data.py", "docs/WALKTHROUGH.md", ".gitignore", ".github/workflows/ci.yml", ".project-meta/ledger.json", ".project-meta/decisions.log"],
+        "files_touched": [
+          "src/download_nab.py",
+          "tests/test_nab_data.py",
+          "docs/WALKTHROUGH.md",
+          ".gitignore",
+          ".github/workflows/ci.yml",
+          ".project-meta/ledger.json",
+          ".project-meta/decisions.log"
+        ],
         "layman_note": {
           "what": "Downloaded the full NAB dataset (58 CSVs, 7 categories, 9.1 MB) via a reusable download script.",
           "why": "The benchmark data is the raw material for everything that follows.",
@@ -172,5 +242,6 @@
       "outcome": "STEP_DONE",
       "detail": "P1 step-002: Django answer-key miner. 12 CVEs, 19 vulnerable spots, 12 CWE types. Miner script (src/answer_key_miner.py) + seeds + answer key + 10 new tests (23/23 green). Reconciled in-repo ledger. Next: P2 step-002 (NAB scoring protocol)."
     }
-  ]
+  ],
+  "last_run_date": "2026-08-12"
 }
