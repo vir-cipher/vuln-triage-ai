@@ -1,0 +1,137 @@
+[
+  {
+    "cve_id": "CVE-2026-9080",
+    "description": "UAF after pause in socket callback",
+    "vuln_type": "Use After Free",
+    "cwe_id": "CWE-416",
+    "severity": "low",
+    "fix_commit_sha": "5ab34cba42e4ee4282fe8bab43f311d51b9bf9bd",
+    "primary_source": "https://curl.se/docs/CVE-2026-9080.html"
+  },
+  {
+    "cve_id": "CVE-2026-8925",
+    "description": "SASL double-free",
+    "vuln_type": "Double Free",
+    "cwe_id": "CWE-415",
+    "severity": "medium",
+    "fix_commit_sha": "3da249e1f0715fdb1a7a9e2567b8f6ef8b51d82a",
+    "primary_source": "https://curl.se/docs/CVE-2026-8925.html"
+  },
+  {
+    "cve_id": "CVE-2026-8932",
+    "description": "incomplete mTLS config matching in conn reuse",
+    "vuln_type": "Authentication Bypass by Primary Weakness",
+    "cwe_id": "CWE-305",
+    "severity": "low",
+    "fix_commit_sha": "7541ae569d82bb2dfb24b1ee0b43e2e00e9e0fbd",
+    "primary_source": "https://curl.se/docs/CVE-2026-8932.html"
+  },
+  {
+    "cve_id": "CVE-2026-8924",
+    "description": "trailing dot domain super cookie",
+    "vuln_type": "Information Exposure Through Sent Data",
+    "cwe_id": "CWE-201",
+    "severity": "low",
+    "fix_commit_sha": "51beed175dbf45bceb5c1deb5ae019e69f6a6c54",
+    "primary_source": "https://curl.se/docs/CVE-2026-8924.html"
+  },
+  {
+    "cve_id": "CVE-2026-8926",
+    "description": "password leak with netrc and user in URL",
+    "vuln_type": "Insufficiently Protected Credentials",
+    "cwe_id": "CWE-522",
+    "severity": "low",
+    "fix_commit_sha": "4ae1d7cc2643e4773a136395f12bc02fc6867854",
+    "primary_source": "https://curl.se/docs/CVE-2026-8926.html"
+  },
+  {
+    "cve_id": "CVE-2026-8927",
+    "description": "env-set cross-proxy Digest auth state leak",
+    "vuln_type": "Authentication Bypass by Capture-replay",
+    "cwe_id": "CWE-294",
+    "severity": "medium",
+    "fix_commit_sha": "5c225384b8d52c67ce8259c6e4203bc57aacb567",
+    "primary_source": "https://curl.se/docs/CVE-2026-8927.html"
+  },
+  {
+    "cve_id": "CVE-2026-9079",
+    "description": "stale proxy password leak",
+    "vuln_type": "Insufficiently Protected Credentials",
+    "cwe_id": "CWE-522",
+    "severity": "medium",
+    "fix_commit_sha": "88c7e16cceec816a2df45c899d49b1e85513f193",
+    "primary_source": "https://curl.se/docs/CVE-2026-9079.html"
+  },
+  {
+    "cve_id": "CVE-2026-9545",
+    "description": "exposing HTTP/3 early data",
+    "vuln_type": "Exposure of Sensitive Information to an Unauthorized Actor",
+    "cwe_id": "CWE-200",
+    "severity": "low",
+    "fix_commit_sha": "7b9613fa9b1a5e04301a3920eef58e8138dad05e",
+    "primary_source": "https://curl.se/docs/CVE-2026-9545.html"
+  },
+  {
+    "cve_id": "CVE-2026-9546",
+    "description": "sending old referer",
+    "vuln_type": "Exposure of Sensitive Information to an Unauthorized Actor",
+    "cwe_id": "CWE-200",
+    "severity": "low",
+    "fix_commit_sha": "862e8a74a84478d82973471b4f49dc2746c1780e",
+    "primary_source": "https://curl.se/docs/CVE-2026-9546.html"
+  },
+  {
+    "cve_id": "CVE-2026-9547",
+    "description": "SSH improper host validation",
+    "vuln_type": "Improper Validation of Certificate with Host Mismatch",
+    "cwe_id": "CWE-297",
+    "severity": "low",
+    "fix_commit_sha": "0b8dbbc63c98777e4584cb9fbd71df3464008ad1",
+    "primary_source": "https://curl.se/docs/CVE-2026-9547.html"
+  },
+  {
+    "cve_id": "CVE-2026-10536",
+    "description": "HTTP/2 stream-dependency tree UAF",
+    "vuln_type": "Use After Free",
+    "cwe_id": "CWE-416",
+    "severity": "low",
+    "fix_commit_sha": "bfbff7852f050232edd3e5ca5c6bf2021c340f5a",
+    "primary_source": "https://curl.se/docs/CVE-2026-10536.html"
+  },
+  {
+    "cve_id": "CVE-2026-11352",
+    "description": "QUIC zero-length UDP datagrams busy-loop",
+    "vuln_type": "Infinite Loop",
+    "cwe_id": "CWE-835",
+    "severity": "low",
+    "fix_commit_sha": "56eca2afb4806f1032872fa97d1834b3c1385276",
+    "primary_source": "https://curl.se/docs/CVE-2026-11352.html"
+  },
+  {
+    "cve_id": "CVE-2026-11564",
+    "description": "Native CA trust persist",
+    "vuln_type": "Improper Certificate Validation",
+    "cwe_id": "CWE-295",
+    "severity": "low",
+    "fix_commit_sha": "d69bfad3fa3daf5e72331f6870667607828d5891",
+    "primary_source": "https://curl.se/docs/CVE-2026-11564.html"
+  },
+  {
+    "cve_id": "CVE-2026-11586",
+    "description": "WS Auto-PONG memory exhaustion",
+    "vuln_type": "Resource Exhaustion",
+    "cwe_id": "CWE-770",
+    "severity": "low",
+    "fix_commit_sha": "849317ff5c5a5e13f50ec3d001e46ddffa77d8a4",
+    "primary_source": "https://curl.se/docs/CVE-2026-11586.html"
+  },
+  {
+    "cve_id": "CVE-2026-11856",
+    "description": "cross-origin Digest auth state leak",
+    "vuln_type": "Authentication Bypass by Capture-replay",
+    "cwe_id": "CWE-294",
+    "severity": "medium",
+    "fix_commit_sha": "5c6b4880357ab3e72967c1c45cae0f96ffabc535",
+    "primary_source": "https://curl.se/docs/CVE-2026-11856.html"
+  }
+]

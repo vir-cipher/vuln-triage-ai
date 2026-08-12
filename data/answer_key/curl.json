@@ -1,0 +1,284 @@
+{
+  "project": "curl",
+  "repo": "curl/curl",
+  "total_spots": 24,
+  "total_cves": 12,
+  "entries": [
+    {
+      "cve_id": "CVE-2026-9080",
+      "description": "UAF after pause in socket callback",
+      "vuln_type": "Use After Free",
+      "cwe_id": "CWE-416",
+      "severity": "low",
+      "fix_commit_sha": "5ab34cba42e4ee4282fe8bab43f311d51b9bf9bd",
+      "parent_commit_sha": "862e8a74a84478d82973471b4f49dc2746c1780e",
+      "repo": "curl/curl",
+      "vulnerable_files": [
+        {
+          "file": "lib/multi_ev.c",
+          "additions": 20,
+          "deletions": 3
+        }
+      ],
+      "primary_source": "https://curl.se/docs/CVE-2026-9080.html"
+    },
+    {
+      "cve_id": "CVE-2026-8926",
+      "description": "password leak with netrc and user in URL",
+      "vuln_type": "Insufficiently Protected Credentials",
+      "cwe_id": "CWE-522",
+      "severity": "low",
+      "fix_commit_sha": "4ae1d7cc2643e4773a136395f12bc02fc6867854",
+      "parent_commit_sha": "5c1e0179875427b68dad3827b70675c7fe82380f",
+      "repo": "curl/curl",
+      "vulnerable_files": [
+        {
+          "file": "lib/netrc.c",
+          "additions": 456,
+          "deletions": 367
+        },
+        {
+          "file": "lib/netrc.h",
+          "additions": 7,
+          "deletions": 7
+        },
+        {
+          "file": "lib/url.c",
+          "additions": 71,
+          "deletions": 84
+        }
+      ],
+      "primary_source": "https://curl.se/docs/CVE-2026-8926.html"
+    },
+    {
+      "cve_id": "CVE-2026-8927",
+      "description": "env-set cross-proxy Digest auth state leak",
+      "vuln_type": "Authentication Bypass by Capture-replay",
+      "cwe_id": "CWE-294",
+      "severity": "medium",
+      "fix_commit_sha": "5c225384b8d52c67ce8259c6e4203bc57aacb567",
+      "parent_commit_sha": "d99dcfb04a70fa0e49a7745de63ed6041e5b67f5",
+      "repo": "curl/curl",
+      "vulnerable_files": [
+        {
+          "file": "lib/url.c",
+          "additions": 11,
+          "deletions": 0
+        },
+        {
+          "file": "lib/urldata.h",
+          "additions": 1,
+          "deletions": 0
+        }
+      ],
+      "primary_source": "https://curl.se/docs/CVE-2026-8927.html"
+    },
+    {
+      "cve_id": "CVE-2026-9079",
+      "description": "stale proxy password leak",
+      "vuln_type": "Insufficiently Protected Credentials",
+      "cwe_id": "CWE-522",
+      "severity": "medium",
+      "fix_commit_sha": "88c7e16cceec816a2df45c899d49b1e85513f193",
+      "parent_commit_sha": "f902c3c4860d9b57fb57aede482c57938a2a6a48",
+      "repo": "curl/curl",
+      "vulnerable_files": [
+        {
+          "file": "lib/setopt.c",
+          "additions": 6,
+          "deletions": 6
+        }
+      ],
+      "primary_source": "https://curl.se/docs/CVE-2026-9079.html"
+    },
+    {
+      "cve_id": "CVE-2026-9545",
+      "description": "exposing HTTP/3 early data",
+      "vuln_type": "Exposure of Sensitive Information to an Unauthorized Actor",
+      "cwe_id": "CWE-200",
+      "severity": "low",
+      "fix_commit_sha": "7b9613fa9b1a5e04301a3920eef58e8138dad05e",
+      "parent_commit_sha": "f69405b38f0144cab73aa1237d5b9dc46a6f50b2",
+      "repo": "curl/curl",
+      "vulnerable_files": [
+        {
+          "file": "lib/vquic/curl_ngtcp2.c",
+          "additions": 10,
+          "deletions": 1
+        }
+      ],
+      "primary_source": "https://curl.se/docs/CVE-2026-9545.html"
+    },
+    {
+      "cve_id": "CVE-2026-9546",
+      "description": "sending old referer",
+      "vuln_type": "Exposure of Sensitive Information to an Unauthorized Actor",
+      "cwe_id": "CWE-200",
+      "severity": "low",
+      "fix_commit_sha": "862e8a74a84478d82973471b4f49dc2746c1780e",
+      "parent_commit_sha": "a4d8fd7a2a6b799a8e8064c11cefcd9b5c7ec1c9",
+      "repo": "curl/curl",
+      "vulnerable_files": [
+        {
+          "file": "lib/transfer.c",
+          "additions": 2,
+          "deletions": 0
+        }
+      ],
+      "primary_source": "https://curl.se/docs/CVE-2026-9546.html"
+    },
+    {
+      "cve_id": "CVE-2026-9547",
+      "description": "SSH improper host validation",
+      "vuln_type": "Improper Validation of Certificate with Host Mismatch",
+      "cwe_id": "CWE-297",
+      "severity": "low",
+      "fix_commit_sha": "0b8dbbc63c98777e4584cb9fbd71df3464008ad1",
+      "parent_commit_sha": "4102400028612bf83c61755efbe4cdef49b231b7",
+      "repo": "curl/curl",
+      "vulnerable_files": [
+        {
+          "file": "lib/vssh/libssh.c",
+          "additions": 2,
+          "deletions": 0
+        }
+      ],
+      "primary_source": "https://curl.se/docs/CVE-2026-9547.html"
+    },
+    {
+      "cve_id": "CVE-2026-10536",
+      "description": "HTTP/2 stream-dependency tree UAF",
+      "vuln_type": "Use After Free",
+      "cwe_id": "CWE-416",
+      "severity": "low",
+      "fix_commit_sha": "bfbff7852f050232edd3e5ca5c6bf2021c340f5a",
+      "parent_commit_sha": "2056498625d183248a9d435a43a2b41f58b2e74d",
+      "repo": "curl/curl",
+      "vulnerable_files": [
+        {
+          "file": "include/curl/curl.h",
+          "additions": 4,
+          "deletions": 2
+        },
+        {
+          "file": "lib/http2.c",
+          "additions": 6,
+          "deletions": 12
+        },
+        {
+          "file": "lib/setopt.c",
+          "additions": 3,
+          "deletions": 6
+        },
+        {
+          "file": "lib/url.c",
+          "additions": 0,
+          "deletions": 98
+        },
+        {
+          "file": "lib/urldata.h",
+          "additions": 0,
+          "deletions": 8
+        }
+      ],
+      "primary_source": "https://curl.se/docs/CVE-2026-10536.html"
+    },
+    {
+      "cve_id": "CVE-2026-11352",
+      "description": "QUIC zero-length UDP datagrams busy-loop",
+      "vuln_type": "Infinite Loop",
+      "cwe_id": "CWE-835",
+      "severity": "low",
+      "fix_commit_sha": "56eca2afb4806f1032872fa97d1834b3c1385276",
+      "parent_commit_sha": "c32427d0c1ac2c2a923243bf83db1e0fd703e788",
+      "repo": "curl/curl",
+      "vulnerable_files": [
+        {
+          "file": "lib/vquic/vquic.c",
+          "additions": 6,
+          "deletions": 2
+        }
+      ],
+      "primary_source": "https://curl.se/docs/CVE-2026-11352.html"
+    },
+    {
+      "cve_id": "CVE-2026-11564",
+      "description": "Native CA trust persist",
+      "vuln_type": "Improper Certificate Validation",
+      "cwe_id": "CWE-295",
+      "severity": "low",
+      "fix_commit_sha": "d69bfad3fa3daf5e72331f6870667607828d5891",
+      "parent_commit_sha": "435fb96dcf787335626ada95dc02eb26afcf7bca",
+      "repo": "curl/curl",
+      "vulnerable_files": [
+        {
+          "file": "lib/doh.c",
+          "additions": 2,
+          "deletions": 1
+        },
+        {
+          "file": "lib/setopt.c",
+          "additions": 2,
+          "deletions": 18
+        },
+        {
+          "file": "lib/vtls/vtls_config.c",
+          "additions": 24,
+          "deletions": 0
+        }
+      ],
+      "primary_source": "https://curl.se/docs/CVE-2026-11564.html"
+    },
+    {
+      "cve_id": "CVE-2026-11586",
+      "description": "WS Auto-PONG memory exhaustion",
+      "vuln_type": "Resource Exhaustion",
+      "cwe_id": "CWE-770",
+      "severity": "low",
+      "fix_commit_sha": "849317ff5c5a5e13f50ec3d001e46ddffa77d8a4",
+      "parent_commit_sha": "fb9a520873133e369fa86ef63b4e4f0fd2fc1f68",
+      "repo": "curl/curl",
+      "vulnerable_files": [
+        {
+          "file": "lib/ws.c",
+          "additions": 21,
+          "deletions": 12
+        }
+      ],
+      "primary_source": "https://curl.se/docs/CVE-2026-11586.html"
+    },
+    {
+      "cve_id": "CVE-2026-11856",
+      "description": "cross-origin Digest auth state leak",
+      "vuln_type": "Authentication Bypass by Capture-replay",
+      "cwe_id": "CWE-294",
+      "severity": "medium",
+      "fix_commit_sha": "5c6b4880357ab3e72967c1c45cae0f96ffabc535",
+      "parent_commit_sha": "3f1055303e57eb22c01aae638588b96e9426c9db",
+      "repo": "curl/curl",
+      "vulnerable_files": [
+        {
+          "file": "lib/http_digest.c",
+          "additions": 16,
+          "deletions": 0
+        },
+        {
+          "file": "lib/urldata.h",
+          "additions": 2,
+          "deletions": 3
+        },
+        {
+          "file": "lib/vauth/digest.c",
+          "additions": 2,
+          "deletions": 0
+        },
+        {
+          "file": "lib/vauth/digest_sspi.c",
+          "additions": 1,
+          "deletions": 0
+        }
+      ],
+      "primary_source": "https://curl.se/docs/CVE-2026-11856.html"
+    }
+  ]
+}

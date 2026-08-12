@@ -5,6 +5,9 @@ and rationale for each.
 
 Step-002: django.json has >=10 pre-fix vulnerable spots across >=5 CVEs
 with >=3 CWE types, mined via git archaeology from real fix commits.
+
+Step-003: curl.json has >=10 pre-fix vulnerable spots across >=5 CVEs
+with >=3 CWE types (C memory-safety and auth bugs).
 """
 
 import json
@@ -18,7 +21,6 @@ DJANGO_SEEDS = ROOT / "data" / "answer_key" / "django_seeds.json"
 
 # The five project names we selected (order matters for the heading check).
 EXPECTED_PROJECTS = ["Django", "curl", "OpenSSL", "Pillow", "Node.js"]
-
 
 # --- Step-001 tests (targets.md) ---
 
@@ -44,7 +46,6 @@ def test_each_project_has_language():
         assert re.search(
             r"\*\*Language:\*\*", section
         ), f"{name} section missing **Language:**"
-
 
 def test_each_project_has_fix_commit_density():
     text = TARGETS.read_text(encoding="utf-8")
@@ -93,7 +94,6 @@ def test_django_ak_has_at_least_5_cves():
         f"Need >=5 CVEs, got {ak['total_cves']}"
     )
 
-
 def test_django_ak_has_at_least_3_cwe_types():
     ak = json.loads(DJANGO_AK.read_text(encoding="utf-8"))
     types = {e["cwe_id"] for e in ak["entries"]}
@@ -119,7 +119,6 @@ def test_django_ak_every_entry_has_vuln_files():
         assert len(entry["vulnerable_files"]) >= 1, (
             f'{entry["cve_id"]}: no vulnerable files recorded'
         )
-
 
 def test_django_ak_vuln_files_are_source_not_docs():
     """Vulnerable files should be source code, not docs or test files."""
@@ -153,3 +152,82 @@ def test_django_ak_parent_shas_are_40_hex():
         assert len(sha) == 40 and all(c in "0123456789abcdef" for c in sha), (
             f'{entry["cve_id"]}: parent_commit_sha "{sha}" is not 40-char hex'
         )
+
+
+# --- Step-003 tests (curl.json answer key) ---
+
+CURL_AK = ROOT / "data" / "answer_key" / "curl.json"
+CURL_SEEDS = ROOT / "data" / "answer_key" / "curl_seeds.json"
+
+
+def test_curl_answer_key_exists():
+    assert CURL_AK.exists(), "data/answer_key/curl.json missing"
+
+
+def test_curl_seeds_exists():
+    assert CURL_SEEDS.exists(), "data/answer_key/curl_seeds.json missing"
+
+
+def test_curl_ak_has_at_least_10_spots():
+    ak = json.loads(CURL_AK.read_text(encoding="utf-8"))
+    assert ak["total_spots"] >= 10, (
+        f"Need >=10 vulnerable spots, got {ak['total_spots']}"
+    )
+
+
+def test_curl_ak_has_at_least_5_cves():
+    ak = json.loads(CURL_AK.read_text(encoding="utf-8"))
+    assert ak["total_cves"] >= 5, (
+        f"Need >=5 CVEs, got {ak['total_cves']}"
+    )
+
+def test_curl_ak_has_at_least_3_cwe_types():
+    ak = json.loads(CURL_AK.read_text(encoding="utf-8"))
+    types = {e["cwe_id"] for e in ak["entries"]}
+    assert len(types) >= 3, (
+        f"Need >=3 distinct CWE types, got {len(types)}: {types}"
+    )
+
+
+def test_curl_ak_entries_have_required_fields():
+    ak = json.loads(CURL_AK.read_text(encoding="utf-8"))
+    required = ["cve_id", "fix_commit_sha", "parent_commit_sha",
+                "vulnerable_files", "vuln_type", "cwe_id"]
+    for entry in ak["entries"]:
+        for field in required:
+            assert entry.get(field), (
+                f'{entry.get("cve_id", "?")}: missing or empty field "{field}"'
+            )
+
+
+def test_curl_ak_every_entry_has_vuln_files():
+    ak = json.loads(CURL_AK.read_text(encoding="utf-8"))
+    for entry in ak["entries"]:
+        assert len(entry["vulnerable_files"]) >= 1, (
+            f'{entry["cve_id"]}: no vulnerable files recorded'
+        )
+
+def test_curl_ak_fix_shas_are_40_hex():
+    """Fix commit SHAs should be full 40-char hex."""
+    ak = json.loads(CURL_AK.read_text(encoding="utf-8"))
+    for entry in ak["entries"]:
+        sha = entry["fix_commit_sha"]
+        assert len(sha) == 40 and all(c in "0123456789abcdef" for c in sha), (
+            f'{entry["cve_id"]}: fix_commit_sha "{sha}" is not 40-char hex'
+        )
+
+
+def test_curl_ak_parent_shas_are_40_hex():
+    """Parent commit SHAs should be full 40-char hex."""
+    ak = json.loads(CURL_AK.read_text(encoding="utf-8"))
+    for entry in ak["entries"]:
+        sha = entry["parent_commit_sha"]
+        assert len(sha) == 40 and all(c in "0123456789abcdef" for c in sha), (
+            f'{entry["cve_id"]}: parent_commit_sha "{sha}" is not 40-char hex'
+        )
+
+
+def test_curl_ak_project_is_curl():
+    ak = json.loads(CURL_AK.read_text(encoding="utf-8"))
+    assert ak["project"] == "curl", f'Expected project=curl, got {ak["project"]}'
+    assert ak["repo"] == "curl/curl", f'Expected repo=curl/curl, got {ak["repo"]}'
