@@ -1,0 +1,373 @@
+{
+  "project": "openssl",
+  "repo": "openssl/openssl",
+  "total_spots": 34,
+  "total_cves": 15,
+  "entries": [
+    {
+      "cve_id": "CVE-2026-45447",
+      "description": "Use-after-free in PKCS7_verify()",
+      "vuln_type": "Use After Free",
+      "cwe_id": "CWE-416",
+      "severity": "moderate",
+      "fix_commit_sha": "f4129fbe3cde786d363510069fe297234f99be8f",
+      "parent_commit_sha": "609bcb24866d64f1fc49d38b852edbb39057d721",
+      "repo": "openssl/openssl",
+      "vulnerable_files": [
+        {
+          "file": "crypto/pkcs7/pk7_smime.c",
+          "additions": 6,
+          "deletions": 3
+        }
+      ],
+      "primary_source": "https://openssl-library.org/news/vulnerabilities/"
+    },
+    {
+      "cve_id": "CVE-2026-35188",
+      "description": "Double-free when checking OCSP stapled response",
+      "vuln_type": "Double Free",
+      "cwe_id": "CWE-415",
+      "severity": "moderate",
+      "fix_commit_sha": "58633b658fe74095c8cdde191e4ce1bf94f8c5f9",
+      "parent_commit_sha": "68ef88913e321bdb47eee88118ceba18ed2388cd",
+      "repo": "openssl/openssl",
+      "vulnerable_files": [
+        {
+          "file": "crypto/x509/x509_vfy.c",
+          "additions": 1,
+          "deletions": 0
+        }
+      ],
+      "primary_source": "https://openssl-library.org/news/vulnerabilities/"
+    },
+    {
+      "cve_id": "CVE-2026-42764",
+      "description": "NULL dereference in QUIC address validation",
+      "vuln_type": "NULL Pointer Dereference",
+      "cwe_id": "CWE-476",
+      "severity": "moderate",
+      "fix_commit_sha": "5097ec4dae239112498abb722e255ea60ef7ac48",
+      "parent_commit_sha": "58633b658fe74095c8cdde191e4ce1bf94f8c5f9",
+      "repo": "openssl/openssl",
+      "vulnerable_files": [
+        {
+          "file": "ssl/quic/quic_port.c",
+          "additions": 4,
+          "deletions": 2
+        }
+      ],
+      "primary_source": "https://openssl-library.org/news/vulnerabilities/"
+    },
+    {
+      "cve_id": "CVE-2026-42766",
+      "description": "NULL dereference processing CMS PasswordRecipientInfo",
+      "vuln_type": "NULL Pointer Dereference",
+      "cwe_id": "CWE-476",
+      "severity": "moderate",
+      "fix_commit_sha": "74245170b5a64b234ac4af27c86a25ec251c8b2a",
+      "parent_commit_sha": "a9af3442290e8a04706a3cd5f284ffd5b486e3f6",
+      "repo": "openssl/openssl",
+      "vulnerable_files": [
+        {
+          "file": "crypto/cms/cms_pwri.c",
+          "additions": 5,
+          "deletions": 0
+        }
+      ],
+      "primary_source": "https://openssl-library.org/news/vulnerabilities/"
+    },
+    {
+      "cve_id": "CVE-2026-14456",
+      "description": "QUIC server unlimited pending connections",
+      "vuln_type": "Allocation of Resources Without Limits",
+      "cwe_id": "CWE-770",
+      "severity": "moderate",
+      "fix_commit_sha": "9416706d408bb84deb7cee4647bff3045d2dc7ba",
+      "parent_commit_sha": "2c9a078b6030444ed868a3943991f42b35cd49dc",
+      "repo": "openssl/openssl",
+      "vulnerable_files": [
+        {
+          "file": "doc/man3/SSL_get_value_uint.pod",
+          "additions": 17,
+          "deletions": 1
+        },
+        {
+          "file": "include/internal/quic_port.h",
+          "additions": 4,
+          "deletions": 0
+        },
+        {
+          "file": "include/openssl/ssl.h.in",
+          "additions": 1,
+          "deletions": 0
+        },
+        {
+          "file": "ssl/quic/quic_impl.c",
+          "additions": 32,
+          "deletions": 0
+        },
+        {
+          "file": "ssl/quic/quic_port.c",
+          "additions": 16,
+          "deletions": 0
+        },
+        {
+          "file": "ssl/quic/quic_port_local.h",
+          "additions": 1,
+          "deletions": 0
+        },
+        {
+          "file": "util/other.syms",
+          "additions": 1,
+          "deletions": 0
+        }
+      ],
+      "primary_source": "https://openssl-library.org/news/vulnerabilities/"
+    },
+    {
+      "cve_id": "CVE-2026-31789",
+      "description": "Buffer overflow in buf2hex conversion",
+      "vuln_type": "Buffer Overflow",
+      "cwe_id": "CWE-120",
+      "severity": "moderate",
+      "fix_commit_sha": "3244aa4b9d6ea0220cc14fd97d951c67b5052837",
+      "parent_commit_sha": "dd3544845e206ec8cbcbd756e2d402c57fc5d313",
+      "repo": "openssl/openssl",
+      "vulnerable_files": [
+        {
+          "file": "crypto/o_str.c",
+          "additions": 12,
+          "deletions": 1
+        }
+      ],
+      "primary_source": "https://openssl-library.org/news/vulnerabilities/"
+    },
+    {
+      "cve_id": "CVE-2026-28388",
+      "description": "NULL dereference when Delta CRL lacks CRL Number extension",
+      "vuln_type": "NULL Pointer Dereference",
+      "cwe_id": "CWE-476",
+      "severity": "low",
+      "fix_commit_sha": "d6ad8595e86dc96ca8771f0a1714b31794befa75",
+      "parent_commit_sha": "7464ccdd43f600decd0af571556a1fc56ccd6419",
+      "repo": "openssl/openssl",
+      "vulnerable_files": [
+        {
+          "file": "crypto/x509/x509_vfy.c",
+          "additions": 2,
+          "deletions": 0
+        }
+      ],
+      "primary_source": "https://openssl-library.org/news/vulnerabilities/"
+    },
+    {
+      "cve_id": "CVE-2026-42765",
+      "description": "NULL dereference in certificate verification with OCSP checking",
+      "vuln_type": "NULL Pointer Dereference",
+      "cwe_id": "CWE-476",
+      "severity": "low",
+      "fix_commit_sha": "a9af3442290e8a04706a3cd5f284ffd5b486e3f6",
+      "parent_commit_sha": "5097ec4dae239112498abb722e255ea60ef7ac48",
+      "repo": "openssl/openssl",
+      "vulnerable_files": [
+        {
+          "file": "crypto/x509/x509_vfy.c",
+          "additions": 10,
+          "deletions": 0
+        }
+      ],
+      "primary_source": "https://openssl-library.org/news/vulnerabilities/"
+    },
+    {
+      "cve_id": "CVE-2026-34180",
+      "description": "Length truncation in ASN1_STRING_set",
+      "vuln_type": "Integer Overflow",
+      "cwe_id": "CWE-190",
+      "severity": "low",
+      "fix_commit_sha": "fcb23806047f5afbe55d5d601a527fc24bf7ca2c",
+      "parent_commit_sha": "2f789ca4f2bbbd57a821c08eabee6d193a03bf24",
+      "repo": "openssl/openssl",
+      "vulnerable_files": [
+        {
+          "file": "crypto/asn1/tasn_dec.c",
+          "additions": 17,
+          "deletions": 7
+        }
+      ],
+      "primary_source": "https://openssl-library.org/news/vulnerabilities/"
+    },
+    {
+      "cve_id": "CVE-2026-42771",
+      "description": "Length miscalculation in validate_email",
+      "vuln_type": "Incorrect Calculation of Buffer Size",
+      "cwe_id": "CWE-131",
+      "severity": "low",
+      "fix_commit_sha": "b3a555a0a7aa0028887149f6f973af89a4937bea",
+      "parent_commit_sha": "0f3fab2eccc7c3417093a8243dd15d95b6cb472d",
+      "repo": "openssl/openssl",
+      "vulnerable_files": [
+        {
+          "file": "crypto/x509/x509_vpm.c",
+          "additions": 3,
+          "deletions": 3
+        }
+      ],
+      "primary_source": "https://openssl-library.org/news/vulnerabilities/"
+    },
+    {
+      "cve_id": "CVE-2026-42768",
+      "description": "Missing implicit rejection for CMS/PKCS#7 RSA decryption",
+      "vuln_type": "Observable Discrepancy",
+      "cwe_id": "CWE-203",
+      "severity": "moderate",
+      "fix_commit_sha": "d5030cdf32d6cd27bd964a0cb7aed2b7cb713369",
+      "parent_commit_sha": "f04d65692dd8109be9f387ce2ddd9fb1ab612b6b",
+      "repo": "openssl/openssl",
+      "vulnerable_files": [
+        {
+          "file": "crypto/cms/cms_env.c",
+          "additions": 0,
+          "deletions": 7
+        },
+        {
+          "file": "crypto/pkcs7/pk7_doit.c",
+          "additions": 0,
+          "deletions": 7
+        },
+        {
+          "file": "doc/man3/CMS_decrypt.pod",
+          "additions": 2,
+          "deletions": 2
+        },
+        {
+          "file": "doc/man3/PKCS7_decrypt.pod",
+          "additions": 9,
+          "deletions": 1
+        }
+      ],
+      "primary_source": "https://openssl-library.org/news/vulnerabilities/"
+    },
+    {
+      "cve_id": "CVE-2026-45446",
+      "description": "AES-GCM-SIV/AES-SIV accepts all-zero tag for empty ciphertext",
+      "vuln_type": "Improper Verification of Cryptographic Signature",
+      "cwe_id": "CWE-347",
+      "severity": "moderate",
+      "fix_commit_sha": "609bcb24866d64f1fc49d38b852edbb39057d721",
+      "parent_commit_sha": "f87f0b6a8e04bcdeb98afc82b0da06a2d537f399",
+      "repo": "openssl/openssl",
+      "vulnerable_files": [
+        {
+          "file": "providers/implementations/ciphers/cipher_aes_gcm_siv_hw.c",
+          "additions": 16,
+          "deletions": 11
+        },
+        {
+          "file": "providers/implementations/ciphers/cipher_aes_siv.c",
+          "additions": 3,
+          "deletions": 0
+        },
+        {
+          "file": "test/evp_extra_test.c",
+          "additions": 140,
+          "deletions": 0
+        }
+      ],
+      "primary_source": "https://openssl-library.org/news/vulnerabilities/"
+    },
+    {
+      "cve_id": "CVE-2025-68160",
+      "description": "Heap buffer overflow in BIO_f_linebuffer",
+      "vuln_type": "Heap Buffer Overflow",
+      "cwe_id": "CWE-122",
+      "severity": "low",
+      "fix_commit_sha": "b21663c35a6f0ed4c8de06855bdc7a6a21f00c2f",
+      "parent_commit_sha": "6028c0654ef8350b1a357ad37fd687757ecafac2",
+      "repo": "openssl/openssl",
+      "vulnerable_files": [
+        {
+          "file": "crypto/bio/bf_lbuf.c",
+          "additions": 26,
+          "deletions": 6
+        }
+      ],
+      "primary_source": "https://openssl-library.org/news/vulnerabilities/"
+    },
+    {
+      "cve_id": "CVE-2026-42767",
+      "description": "NULL dereference in OSSL_CRMF_ENCRYPTEDVALUE_decrypt()",
+      "vuln_type": "NULL Pointer Dereference",
+      "cwe_id": "CWE-476",
+      "severity": "low",
+      "fix_commit_sha": "11df4e2ae04fe3f3207aa79b461b6ed90e5f6bce",
+      "parent_commit_sha": "463b444cb16474fdcf2f5ce66227afe2a215f38c",
+      "repo": "openssl/openssl",
+      "vulnerable_files": [
+        {
+          "file": "crypto/crmf/crmf_lib.c",
+          "additions": 6,
+          "deletions": 4
+        }
+      ],
+      "primary_source": "https://openssl-library.org/news/vulnerabilities/"
+    },
+    {
+      "cve_id": "CVE-2026-34183",
+      "description": "QUIC unbounded memory growth from PATH_CHALLENGE frames",
+      "vuln_type": "Allocation of Resources Without Limits",
+      "cwe_id": "CWE-770",
+      "severity": "low",
+      "fix_commit_sha": "9bedb613191f2d86def2be626b72f239daf81808",
+      "parent_commit_sha": "d49444fa987f01e48af72d51cbec6b10a35ae784",
+      "repo": "openssl/openssl",
+      "vulnerable_files": [
+        {
+          "file": "include/internal/quic_cfq.h",
+          "additions": 1,
+          "deletions": 0
+        },
+        {
+          "file": "include/internal/quic_channel.h",
+          "additions": 2,
+          "deletions": 0
+        },
+        {
+          "file": "include/internal/quic_fifd.h",
+          "additions": 1,
+          "deletions": 0
+        },
+        {
+          "file": "ssl/quic/quic_cfq.c",
+          "additions": 15,
+          "deletions": 0
+        },
+        {
+          "file": "ssl/quic/quic_channel.c",
+          "additions": 6,
+          "deletions": 0
+        },
+        {
+          "file": "ssl/quic/quic_channel_local.h",
+          "additions": 39,
+          "deletions": 0
+        },
+        {
+          "file": "ssl/quic/quic_fifd.c",
+          "additions": 43,
+          "deletions": 0
+        },
+        {
+          "file": "ssl/quic/quic_rx_depack.c",
+          "additions": 36,
+          "deletions": 24
+        },
+        {
+          "file": "ssl/quic/quic_txp.c",
+          "additions": 2,
+          "deletions": 0
+        }
+      ],
+      "primary_source": "https://openssl-library.org/news/vulnerabilities/"
+    }
+  ]
+}

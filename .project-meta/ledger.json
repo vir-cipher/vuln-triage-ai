@@ -7,7 +7,7 @@
   "github_identity_gate": {
     "_comment": "Rule 0a",
     "expected_account": "vir-cipher",
-    "last_verified": "2026-08-12",
+    "last_verified": "2026-08-14",
     "last_verified_by": "gh auth status (vir-cipher active)"
   },
   "projects": {
@@ -21,9 +21,9 @@
       "novelty_gate_passed": true,
       "standout_hook": "First empirical context-optimality curve (hypothesis under test)",
       "plan_total_steps": 21,
-      "step_pointer": 4,
+      "step_pointer": 5,
       "last_green_tag": null,
-      "ci_green_last_seen": "2026-08-12",
+      "ci_green_last_seen": "2026-08-14",
       "build_cadence": "daily",
       "head_sha_last_seen": "64458a4"
     },
@@ -44,7 +44,7 @@
     }
   },
   "active_project": "p2_general_cs",
-  "active_project_note": "P1 step-003 shipped 2026-08-12; next run builds P2 step-003.",
+  "active_project_note": "P1 step-004 shipped 2026-08-14; next run builds P2 step-004.",
   "steps": {
     "p1_cyber": [
       {
@@ -72,7 +72,7 @@
         ],
         "layman_note": {
           "what": "Built the project skeleton: folders, README, walkthrough, CI, frozen 21-step plan.",
-          "why": "Every later step needs a green, tested base — frozen plan means no scope drift.",
+          "why": "Every later step needs a green, tested base \u00e2\u20ac\u201d frozen plan means no scope drift.",
           "concept": "CI: a robot reruns your tests on every push so breakage is caught immediately.",
           "next": "Pick the 5 open-source projects whose security-fix history becomes our answer key."
         }
@@ -92,8 +92,8 @@
         ],
         "layman_note": {
           "what": "Selected 5 OSS projects (Django, curl, OpenSSL, Pillow, Node.js) across Python, C, and JavaScript.",
-          "why": "These projects have rich, documented security-fix histories — the raw material for building the answer key.",
-          "concept": "Git archaeology — mining commit history to find where vulnerabilities were introduced and fixed.",
+          "why": "These projects have rich, documented security-fix histories \u00e2\u20ac\u201d the raw material for building the answer key.",
+          "concept": "Git archaeology \u00e2\u20ac\u201d mining commit history to find where vulnerabilities were introduced and fixed.",
           "next": "Mine Django's git history for >=10 pre-fix vulnerable code locations."
         }
       },
@@ -115,8 +115,8 @@
         ],
         "layman_note": {
           "what": "Built a reusable miner script and produced Django's answer key: 12 CVEs, 19 vulnerable file locations across 12 distinct CWE types.",
-          "why": "The answer key is ground truth — without known-correct answers, there's no way to measure how accurately the AI triages alerts.",
-          "concept": "Git archaeology via API — instead of cloning Django's 30k-commit repo, query GitHub's API for each fix commit's diff to find exactly which source files were patched.",
+          "why": "The answer key is ground truth \u00e2\u20ac\u201d without known-correct answers, there's no way to measure how accurately the AI triages alerts.",
+          "concept": "Git archaeology via API \u00e2\u20ac\u201d instead of cloning Django's 30k-commit repo, query GitHub's API for each fix commit's diff to find exactly which source files were patched.",
           "next": "Mine curl's git history for >=10 pre-fix vulnerable spots (second answer-key entry)."
         }
       },
@@ -137,6 +137,28 @@
           "why": "curl is project 2 of 5. C memory bugs (UAF, double-free) are the classic triage-hard pattern.",
           "concept": "Use-after-free (CWE-416): code accesses memory after it was freed. Classic C bug prevented by higher-level languages.",
           "next": "Mine OpenSSL (project 3) for more C memory + crypto logic bugs."
+        }
+      },
+      {
+        "id": "step-004",
+        "title": "answer key: OpenSSL (project 3)",
+        "status": "done",
+        "done_on": "2026-08-14",
+        "commit_sha": null,
+        "commit_sha_note": "SHA derived from git log post-push (commit includes this file)",
+        "tests_green": true,
+        "files_touched": [
+          "data/answer_key/openssl_seeds.json",
+          "data/answer_key/openssl.json",
+          "tests/test_answer_key.py",
+          ".project-meta/ledger.json",
+          ".project-meta/decisions.log"
+        ],
+        "layman_note": {
+          "what": "Mined 15 real CVEs from OpenSSL; produced 34 vulnerable source-file locations across 10 CWE types.",
+          "why": "OpenSSL is project 3 of 5. Crypto logic bugs + NULL derefs test different context-curve behaviors than Django/curl.",
+          "concept": "NULL pointer dereference (CWE-476): code tries to use a pointer that points to nothing; instant crash, often triggerable remotely.",
+          "next": "Mine Pillow and Node.js (projects 4 and 5) to complete the answer key."
         }
       }
     ],
@@ -166,8 +188,8 @@
         ],
         "layman_note": {
           "what": "Built the project skeleton: folders, README, walkthrough, 10 tests green, CI, frozen 21-step plan.",
-          "why": "Same principle as Track A — start green, stay green.",
-          "concept": "Scaffold — the empty-but-working skeleton built before any real logic.",
+          "why": "Same principle as Track A \u00e2\u20ac\u201d start green, stay green.",
+          "concept": "Scaffold \u00e2\u20ac\u201d the empty-but-working skeleton built before any real logic.",
           "next": "Download the NAB dataset (58 CSV files across 7 categories)."
         }
       },
@@ -190,7 +212,7 @@
         "layman_note": {
           "what": "Downloaded the full NAB dataset (58 CSVs, 7 categories, 9.1 MB) via a reusable download script.",
           "why": "The benchmark data is the raw material for everything that follows.",
-          "concept": "Data ingestion — fetching, organising, and validating a dataset.",
+          "concept": "Data ingestion \u00e2\u20ac\u201d fetching, organising, and validating a dataset.",
           "next": "Implement the NAB scoring protocol."
         }
       }
@@ -205,12 +227,12 @@
     {
       "date": "2026-08-06",
       "ledger_said": "P1 step-000 commit_sha null, P2 stale, active_project p2_general_cs",
-      "code_was": "P1 HEAD at 94a0fd9, P2 HEAD at bfb3082 — matched mirror",
+      "code_was": "P1 HEAD at 94a0fd9, P2 HEAD at bfb3082 \u00e2\u20ac\u201d matched mirror",
       "action": "Patched P1 commit_sha to 94a0fd9, synced P2 step-000. Executed step-001. Flipped active to p2_general_cs."
     },
     {
       "date": "2026-08-08",
-      "ledger_said": "P1 step-001 commit_sha null (not yet patched), active p2_general_cs (stale — mirror already flipped to p1_cyber after run 10)",
+      "ledger_said": "P1 step-001 commit_sha null (not yet patched), active p2_general_cs (stale \u00e2\u20ac\u201d mirror already flipped to p1_cyber after run 10)",
       "code_was": "P1 HEAD at b60d68e (2 commits), P2 HEAD at 74b7991 (per mirror). Mirror: active p1_cyber, P1 pointer 2, P2 pointer 2.",
       "action": "Patched P1 step-001 commit_sha to b60d68e. Synced P2 step-001 from mirror. Executed step-002 (Django answer key). Flipped active to p2_general_cs."
     }
@@ -241,7 +263,13 @@
       "run": 11,
       "outcome": "STEP_DONE",
       "detail": "P1 step-002: Django answer-key miner. 12 CVEs, 19 vulnerable spots, 12 CWE types. Miner script (src/answer_key_miner.py) + seeds + answer key + 10 new tests (23/23 green). Reconciled in-repo ledger. Next: P2 step-002 (NAB scoring protocol)."
+    },
+    {
+      "date": "2026-08-14",
+      "run": 14,
+      "outcome": "STEP_DONE",
+      "detail": "P1 step-004: OpenSSL answer-key mined. 15 CVEs, 34 vulnerable spots, 10 CWE types. 11 new tests (44/44 green). Next: P2 step-004."
     }
   ],
-  "last_run_date": "2026-08-12"
+  "last_run_date": "2026-08-14"
 }

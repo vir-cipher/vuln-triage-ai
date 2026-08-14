@@ -17,3 +17,9 @@
 2026-08-08 · step-002 · CWE diversity: CWE-918 (SSRF), CWE-79 (XSS), CWE-113 (header injection), CWE-89 (SQLi), CWE-436 (header spoofing), CWE-863 (authz bypass), CWE-400 (DoS), CWE-208 (timing), CWE-384 (session fixation), CWE-345 (auth weakness), CWE-770 (resource limit), CWE-732 (permissions). Exceeds the >=3 threshold by 9.
 2026-08-08 · step-002 · 10 new tests added (test_answer_key.py): structure, spot count >=10, CVE count >=5, CWE diversity >=3, required fields, source-not-docs filter, SHA format. Total 23/23 green.
 2026-08-08 · step-002 · Step-002 commit_sha=null (same pre-declaration as prior steps: next run patches via git log).
+
+2026-08-14 · step-004 · OpenSSL answer key: 15 CVEs (2025-2026), 34 vulnerable source-file locations, 10 distinct CWE types. Seeds in data/answer_key/openssl_seeds.json, output in data/answer_key/openssl.json. All CVE IDs and fix commit SHAs verified via gh api repos/openssl/openssl/commits/<sha> — each commit message contains "Fixes CVE-<id>".
+2026-08-14 · step-004 · CWE diversity: CWE-416 (UAF), CWE-415 (double-free), CWE-476 (NULL deref ×5), CWE-770 (resource exhaustion ×2), CWE-120 (buffer overflow), CWE-190 (integer overflow), CWE-131 (incorrect buffer size calc), CWE-203 (side-channel), CWE-347 (crypto signature verification), CWE-122 (heap buffer overflow). Exceeds >=3 threshold by 7.
+2026-08-14 · step-004 · 11 new tests added (test_answer_key.py): existence, spot count >=10, CVE count >=5, CWE diversity >=3, required fields, source-not-docs filter, SHA format, project identity. Total 44/44 green.
+2026-08-14 · step-004 · Step-004 commit_sha=null (same pre-declaration: next run patches via git log).
+2026-08-14 · step-004 · Primary source: openssl-library.org/news/vulnerabilities/ + each commit's "Fixes CVE-<id>" trailer in the OpenSSL repo. GitHub API used for verification.

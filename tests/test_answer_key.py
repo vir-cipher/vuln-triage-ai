@@ -231,3 +231,99 @@ def test_curl_ak_project_is_curl():
     ak = json.loads(CURL_AK.read_text(encoding="utf-8"))
     assert ak["project"] == "curl", f'Expected project=curl, got {ak["project"]}'
     assert ak["repo"] == "curl/curl", f'Expected repo=curl/curl, got {ak["repo"]}'
+
+
+
+# --- Step-004 tests (openssl.json answer key) ---
+
+OPENSSL_AK = ROOT / "data" / "answer_key" / "openssl.json"
+OPENSSL_SEEDS = ROOT / "data" / "answer_key" / "openssl_seeds.json"
+
+
+def test_openssl_answer_key_exists():
+    assert OPENSSL_AK.exists(), "data/answer_key/openssl.json missing"
+
+
+def test_openssl_seeds_exists():
+    assert OPENSSL_SEEDS.exists(), "data/answer_key/openssl_seeds.json missing"
+
+
+def test_openssl_ak_has_at_least_10_spots():
+    ak = json.loads(OPENSSL_AK.read_text(encoding="utf-8"))
+    assert ak["total_spots"] >= 10, (
+        f"Need >=10 vulnerable spots, got {ak['total_spots']}"
+    )
+
+
+def test_openssl_ak_has_at_least_5_cves():
+    ak = json.loads(OPENSSL_AK.read_text(encoding="utf-8"))
+    assert ak["total_cves"] >= 5, (
+        f"Need >=5 CVEs, got {ak['total_cves']}"
+    )
+
+
+def test_openssl_ak_has_at_least_3_cwe_types():
+    ak = json.loads(OPENSSL_AK.read_text(encoding="utf-8"))
+    types = {e["cwe_id"] for e in ak["entries"]}
+    assert len(types) >= 3, (
+        f"Need >=3 distinct CWE types, got {len(types)}: {types}"
+    )
+
+
+def test_openssl_ak_entries_have_required_fields():
+    ak = json.loads(OPENSSL_AK.read_text(encoding="utf-8"))
+    required = ["cve_id", "fix_commit_sha", "parent_commit_sha",
+                "vulnerable_files", "vuln_type", "cwe_id"]
+    for entry in ak["entries"]:
+        for field in required:
+            assert entry.get(field), (
+                f'{entry.get("cve_id", "?")}: missing or empty field "{field}"'
+            )
+
+
+def test_openssl_ak_every_entry_has_vuln_files():
+    ak = json.loads(OPENSSL_AK.read_text(encoding="utf-8"))
+    for entry in ak["entries"]:
+        assert len(entry["vulnerable_files"]) >= 1, (
+            f'{entry["cve_id"]}: no vulnerable files recorded'
+        )
+
+
+def test_openssl_ak_fix_shas_are_40_hex():
+    """Fix commit SHAs should be full 40-char hex."""
+    ak = json.loads(OPENSSL_AK.read_text(encoding="utf-8"))
+    for entry in ak["entries"]:
+        sha = entry["fix_commit_sha"]
+        assert len(sha) == 40 and all(c in "0123456789abcdef" for c in sha), (
+            f'{entry["cve_id"]}: fix_commit_sha "{sha}" is not 40-char hex'
+        )
+
+
+def test_openssl_ak_parent_shas_are_40_hex():
+    """Parent commit SHAs should be full 40-char hex."""
+    ak = json.loads(OPENSSL_AK.read_text(encoding="utf-8"))
+    for entry in ak["entries"]:
+        sha = entry["parent_commit_sha"]
+        assert len(sha) == 40 and all(c in "0123456789abcdef" for c in sha), (
+            f'{entry["cve_id"]}: parent_commit_sha "{sha}" is not 40-char hex'
+        )
+
+
+def test_openssl_ak_project_is_openssl():
+    ak = json.loads(OPENSSL_AK.read_text(encoding="utf-8"))
+    assert ak["project"] == "openssl", f'Expected project=openssl, got {ak["project"]}'
+    assert ak["repo"] == "openssl/openssl", f'Expected repo=openssl/openssl, got {ak["repo"]}'
+
+
+def test_openssl_ak_vuln_files_are_source_not_docs():
+    """Vulnerable files should be source code, not docs or test files."""
+    ak = json.loads(OPENSSL_AK.read_text(encoding="utf-8"))
+    for entry in ak["entries"]:
+        for vf in entry["vulnerable_files"]:
+            f = vf["file"]
+            assert not f.startswith("docs/"), (
+                f'{entry["cve_id"]}: {f} is a docs file, not source'
+            )
+            assert not f.startswith("tests/"), (
+                f'{entry["cve_id"]}: {f} is a test file, not source'
+            )
