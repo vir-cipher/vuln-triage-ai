@@ -23,3 +23,9 @@
 2026-08-14 · step-004 · 11 new tests added (test_answer_key.py): existence, spot count >=10, CVE count >=5, CWE diversity >=3, required fields, source-not-docs filter, SHA format, project identity. Total 44/44 green.
 2026-08-14 · step-004 · Step-004 commit_sha=null (same pre-declaration: next run patches via git log).
 2026-08-14 · step-004 · Primary source: openssl-library.org/news/vulnerabilities/ + each commit's "Fixes CVE-<id>" trailer in the OpenSSL repo. GitHub API used for verification.
+step-005: Pillow + Node.js answer keys complete  
+- Pillow: 15 CVEs from security advisories (GHSA), 40 vulnerable spots, 8 CWE types  
+- Node.js: 16 CVEs from June+July 2026 security releases, 50 spots, 11 CWE types  
+- All CVE-to-commit mappings verified via gh api; every seed has a real fix SHA  
+- Phase 1 answer-key totals: 5 projects, 73 CVEs, 167 spots  
+ 

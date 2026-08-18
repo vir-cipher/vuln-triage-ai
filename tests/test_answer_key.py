@@ -327,3 +327,99 @@ def test_openssl_ak_vuln_files_are_source_not_docs():
             assert not f.startswith("tests/"), (
                 f'{entry["cve_id"]}: {f} is a test file, not source'
             )
+
+
+# --- Step-005 tests (pillow.json + nodejs.json answer keys) ---
+
+PILLOW_AK = ROOT / "data" / "answer_key" / "pillow.json"
+PILLOW_SEEDS = ROOT / "data" / "answer_key" / "pillow_seeds.json"
+NODEJS_AK = ROOT / "data" / "answer_key" / "nodejs.json"
+NODEJS_SEEDS = ROOT / "data" / "answer_key" / "nodejs_seeds.json"
+
+
+# --- Pillow ---
+
+def test_pillow_answer_key_exists():
+    assert PILLOW_AK.exists(), "data/answer_key/pillow.json missing"
+
+def test_pillow_seeds_exists():
+    assert PILLOW_SEEDS.exists(), "data/answer_key/pillow_seeds.json missing"
+
+def test_pillow_ak_has_at_least_10_spots():
+    ak = json.loads(PILLOW_AK.read_text(encoding="utf-8"))
+    assert ak["total_spots"] >= 10, f"Need >=10 spots, got {ak['total_spots']}"
+
+def test_pillow_ak_has_at_least_5_cves():
+    ak = json.loads(PILLOW_AK.read_text(encoding="utf-8"))
+    assert ak["total_cves"] >= 5, f"Need >=5 CVEs, got {ak['total_cves']}"
+
+def test_pillow_ak_has_at_least_3_cwe_types():
+    ak = json.loads(PILLOW_AK.read_text(encoding="utf-8"))
+    types = {e["cwe_id"] for e in ak["entries"]}
+    assert len(types) >= 3, f"Need >=3 CWE types, got {len(types)}: {types}"
+
+def test_pillow_ak_entries_have_required_fields():
+    ak = json.loads(PILLOW_AK.read_text(encoding="utf-8"))
+    required = ["cve_id", "fix_commit_sha", "parent_commit_sha",
+                "vulnerable_files", "vuln_type", "cwe_id"]
+    for entry in ak["entries"]:
+        for field in required:
+            assert entry.get(field), (
+                f'{entry.get("cve_id", "?")}: missing or empty "{field}"'
+            )
+
+def test_pillow_ak_fix_shas_are_40_hex():
+    ak = json.loads(PILLOW_AK.read_text(encoding="utf-8"))
+    for entry in ak["entries"]:
+        sha = entry["fix_commit_sha"]
+        assert len(sha) == 40 and all(c in "0123456789abcdef" for c in sha), (
+            f'{entry["cve_id"]}: fix_commit_sha not 40-char hex'
+        )
+
+def test_pillow_ak_project_is_pillow():
+    ak = json.loads(PILLOW_AK.read_text(encoding="utf-8"))
+    assert ak["project"] == "Pillow", f'Expected project=Pillow, got {ak["project"]}'
+
+
+# --- Node.js ---
+
+def test_nodejs_answer_key_exists():
+    assert NODEJS_AK.exists(), "data/answer_key/nodejs.json missing"
+
+def test_nodejs_seeds_exists():
+    assert NODEJS_SEEDS.exists(), "data/answer_key/nodejs_seeds.json missing"
+
+def test_nodejs_ak_has_at_least_10_spots():
+    ak = json.loads(NODEJS_AK.read_text(encoding="utf-8"))
+    assert ak["total_spots"] >= 10, f"Need >=10 spots, got {ak['total_spots']}"
+
+def test_nodejs_ak_has_at_least_5_cves():
+    ak = json.loads(NODEJS_AK.read_text(encoding="utf-8"))
+    assert ak["total_cves"] >= 5, f"Need >=5 CVEs, got {ak['total_cves']}"
+
+def test_nodejs_ak_has_at_least_3_cwe_types():
+    ak = json.loads(NODEJS_AK.read_text(encoding="utf-8"))
+    types = {e["cwe_id"] for e in ak["entries"]}
+    assert len(types) >= 3, f"Need >=3 CWE types, got {len(types)}: {types}"
+
+def test_nodejs_ak_entries_have_required_fields():
+    ak = json.loads(NODEJS_AK.read_text(encoding="utf-8"))
+    required = ["cve_id", "fix_commit_sha", "parent_commit_sha",
+                "vulnerable_files", "vuln_type", "cwe_id"]
+    for entry in ak["entries"]:
+        for field in required:
+            assert entry.get(field), (
+                f'{entry.get("cve_id", "?")}: missing or empty "{field}"'
+            )
+
+def test_nodejs_ak_fix_shas_are_40_hex():
+    ak = json.loads(NODEJS_AK.read_text(encoding="utf-8"))
+    for entry in ak["entries"]:
+        sha = entry["fix_commit_sha"]
+        assert len(sha) == 40 and all(c in "0123456789abcdef" for c in sha), (
+            f'{entry["cve_id"]}: fix_commit_sha not 40-char hex'
+        )
+
+def test_nodejs_ak_project_is_node():
+    ak = json.loads(NODEJS_AK.read_text(encoding="utf-8"))
+    assert ak["project"] == "node", f'Expected project=node, got {ak["project"]}'

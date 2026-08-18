@@ -1,0 +1,146 @@
+[
+  {
+    "cve_id": "CVE-2026-58045",
+    "description": "zlib: out-of-bounds write via crafted write buffers in zlib binding",
+    "vuln_type": "Out-of-bounds Write",
+    "cwe_id": "CWE-787",
+    "severity": "high",
+    "fix_commit_sha": "4b482c5c213f6dc85dfccdc70640da0c78a4d15c",
+    "primary_source": "https://nodejs.org/en/blog/vulnerability/"
+  },
+  {
+    "cve_id": "CVE-2026-58044",
+    "description": "http: reject requests exceeding maximum header count — header flooding DoS",
+    "vuln_type": "Denial of Service",
+    "cwe_id": "CWE-400",
+    "severity": "high",
+    "fix_commit_sha": "821688aaa03592485900d428098a9602ffe52113",
+    "primary_source": "https://nodejs.org/en/blog/vulnerability/"
+  },
+  {
+    "cve_id": "CVE-2026-58042",
+    "description": "dns: large resolveAny address replies cause heap out-of-bounds read in c-ares wrapper",
+    "vuln_type": "Out-of-bounds Read",
+    "cwe_id": "CWE-125",
+    "severity": "high",
+    "fix_commit_sha": "3e6cca0e6a6f6c8ca23cb02cdac9493936c71f4c",
+    "primary_source": "https://nodejs.org/en/blog/vulnerability/"
+  },
+  {
+    "cve_id": "CVE-2026-58043",
+    "description": "permission: radix split nodes grant unintended filesystem access in permission model",
+    "vuln_type": "Authorization Bypass",
+    "cwe_id": "CWE-863",
+    "severity": "high",
+    "fix_commit_sha": "239bd81fc53c2716c3f317104a53bad6c7729d6b",
+    "primary_source": "https://nodejs.org/en/blog/vulnerability/"
+  },
+  {
+    "cve_id": "CVE-2026-56848",
+    "description": "http2: deferred RST_STREAM while in scope causes use-after-free crash",
+    "vuln_type": "Use After Free",
+    "cwe_id": "CWE-416",
+    "severity": "high",
+    "fix_commit_sha": "ba6cb5c34c22890a05415431d6765efdafb32ff0",
+    "primary_source": "https://nodejs.org/en/blog/vulnerability/"
+  },
+  {
+    "cve_id": "CVE-2026-58040",
+    "description": "https: TLS session reuse does not bind identity checks — server impersonation",
+    "vuln_type": "Authentication Bypass",
+    "cwe_id": "CWE-287",
+    "severity": "high",
+    "fix_commit_sha": "52a8ace880dbd92a96f2e15255a63e383dc28ca8",
+    "primary_source": "https://nodejs.org/en/blog/vulnerability/"
+  },
+  {
+    "cve_id": "CVE-2026-56850",
+    "description": "https: PFX object-array agent keys not distinguished — certificate confusion",
+    "vuln_type": "Authentication Bypass",
+    "cwe_id": "CWE-295",
+    "severity": "medium",
+    "fix_commit_sha": "9f03017f380b1bdba0bd48bb13c105ac71670a1b",
+    "primary_source": "https://nodejs.org/en/blog/vulnerability/"
+  },
+  {
+    "cve_id": "CVE-2026-58041",
+    "description": "sqlite: tag store iterators not invalidated on statement reset — use-after-free",
+    "vuln_type": "Use After Free",
+    "cwe_id": "CWE-416",
+    "severity": "medium",
+    "fix_commit_sha": "d0387cf67cbb4783a45d68a656a24694d1e975f6",
+    "primary_source": "https://nodejs.org/en/blog/vulnerability/"
+  },
+  {
+    "cve_id": "CVE-2026-56847",
+    "description": "permission: fs write permission not enforced for trace events — sandbox escape",
+    "vuln_type": "Authorization Bypass",
+    "cwe_id": "CWE-863",
+    "severity": "medium",
+    "fix_commit_sha": "f242cf48931c7ffa20b89975509e008574309f84",
+    "primary_source": "https://nodejs.org/en/blog/vulnerability/"
+  },
+  {
+    "cve_id": "CVE-2026-58039",
+    "description": "permission: final report output path not checked — arbitrary write via diagnostic report",
+    "vuln_type": "Authorization Bypass",
+    "cwe_id": "CWE-863",
+    "severity": "medium",
+    "fix_commit_sha": "b413a9afecf7839d9953489e5c16b33b215663f0",
+    "primary_source": "https://nodejs.org/en/blog/vulnerability/"
+  },
+  {
+    "cve_id": "CVE-2026-48618",
+    "description": "tls: hostname not normalized for server identity checks — SNI bypass via case/encoding tricks",
+    "vuln_type": "Improper Certificate Validation",
+    "cwe_id": "CWE-295",
+    "severity": "high",
+    "fix_commit_sha": "1efb4ff51a0624236332ea98b23bd1106f68d8af",
+    "primary_source": "https://nodejs.org/en/blog/vulnerability/"
+  },
+  {
+    "cve_id": "CVE-2026-48933",
+    "description": "crypto: WebCrypto cipher output length not guarded — heap buffer overflow in AES/ChaCha20",
+    "vuln_type": "Heap Buffer Overflow",
+    "cwe_id": "CWE-122",
+    "severity": "high",
+    "fix_commit_sha": "6a8808a0bbec99eb8efabfe5ec398239ad1e522f",
+    "primary_source": "https://nodejs.org/en/blog/vulnerability/"
+  },
+  {
+    "cve_id": "CVE-2026-48930",
+    "description": "dns,net: hostnames with embedded NUL bytes bypass validation — SSRF/host confusion",
+    "vuln_type": "Improper Input Validation",
+    "cwe_id": "CWE-20",
+    "severity": "medium",
+    "fix_commit_sha": "7dafafa2424710ded8b77eb7c878e884c1aef64e",
+    "primary_source": "https://nodejs.org/en/blog/vulnerability/"
+  },
+  {
+    "cve_id": "CVE-2026-48931",
+    "description": "http: response queue poisoning in http.Agent — request/response mismatch",
+    "vuln_type": "Request Smuggling",
+    "cwe_id": "CWE-444",
+    "severity": "low",
+    "fix_commit_sha": "179ddaedfba33a70f638de708a2e3289bee3cd55",
+    "primary_source": "https://nodejs.org/en/blog/vulnerability/"
+  },
+  {
+    "cve_id": "CVE-2026-48619",
+    "description": "http2: originSet size not capped — unbounded memory growth via ORIGIN frames",
+    "vuln_type": "Denial of Service",
+    "cwe_id": "CWE-770",
+    "severity": "medium",
+    "fix_commit_sha": "87d847bc708c56343fb83dfe54e14ed7f782bcd4",
+    "primary_source": "https://nodejs.org/en/blog/vulnerability/"
+  },
+  {
+    "cve_id": "CVE-2026-48928",
+    "description": "tls: case-sensitive SNI context matching — TLS context bypass via mixed-case hostname",
+    "vuln_type": "Improper Certificate Validation",
+    "cwe_id": "CWE-295",
+    "severity": "medium",
+    "fix_commit_sha": "a14c158bb337e485d35d23b26cb1c47affa48a46",
+    "primary_source": "https://nodejs.org/en/blog/vulnerability/"
+  }
+]

@@ -7,7 +7,7 @@
   "github_identity_gate": {
     "_comment": "Rule 0a",
     "expected_account": "vir-cipher",
-    "last_verified": "2026-08-14",
+    "last_verified": "2026-08-18",
     "last_verified_by": "gh auth status (vir-cipher active)"
   },
   "projects": {
@@ -21,11 +21,11 @@
       "novelty_gate_passed": true,
       "standout_hook": "First empirical context-optimality curve (hypothesis under test)",
       "plan_total_steps": 21,
-      "step_pointer": 5,
+      "step_pointer": 6,
       "last_green_tag": null,
-      "ci_green_last_seen": "2026-08-14",
+      "ci_green_last_seen": "2026-08-18",
       "build_cadence": "daily",
-      "head_sha_last_seen": "64458a4"
+      "head_sha_last_seen": null
     },
     "p2_general_cs": {
       "id": "s1-gencs",
@@ -36,15 +36,15 @@
       "plan_immutable": true,
       "novelty_gate_passed": true,
       "plan_total_steps": 21,
-      "step_pointer": 2,
+      "step_pointer": 5,
       "last_green_tag": null,
-      "head_sha_last_seen": "74b7991",
-      "ci_green_last_seen": "2026-08-07",
+      "head_sha_last_seen": "44c73fc",
+      "ci_green_last_seen": "2026-08-17",
       "build_cadence": "daily"
     }
   },
   "active_project": "p2_general_cs",
-  "active_project_note": "P1 step-004 shipped 2026-08-14; next run builds P2 step-004.",
+  "active_project_note": "P1 step-005 shipped 2026-08-18; next run builds P2 step-005.",
   "steps": {
     "p1_cyber": [
       {
@@ -53,29 +53,7 @@
         "status": "done",
         "done_on": "2026-08-04",
         "commit_sha": "94a0fd9ffe1db500d305fd28b2b4b2dc5114da56",
-        "tests_green": true,
-        "files_touched": [
-          "README.md",
-          "docs/WALKTHROUGH.md",
-          "src/__init__.py",
-          "src/meta.py",
-          "tests/test_scaffold.py",
-          ".github/workflows/ci.yml",
-          "requirements.txt",
-          ".gitignore",
-          ".project-meta/spec.md",
-          ".project-meta/plan.json",
-          ".project-meta/ledger.json",
-          ".project-meta/decisions.log",
-          "data/answer_key/.gitkeep",
-          "results/.gitkeep"
-        ],
-        "layman_note": {
-          "what": "Built the project skeleton: folders, README, walkthrough, CI, frozen 21-step plan.",
-          "why": "Every later step needs a green, tested base \u00e2\u20ac\u201d frozen plan means no scope drift.",
-          "concept": "CI: a robot reruns your tests on every push so breakage is caught immediately.",
-          "next": "Pick the 5 open-source projects whose security-fix history becomes our answer key."
-        }
+        "tests_green": true
       },
       {
         "id": "step-001",
@@ -83,19 +61,7 @@
         "status": "done",
         "done_on": "2026-08-06",
         "commit_sha": "b60d68e",
-        "tests_green": true,
-        "files_touched": [
-          "data/answer_key/targets.md",
-          "tests/test_answer_key.py",
-          ".project-meta/ledger.json",
-          ".project-meta/decisions.log"
-        ],
-        "layman_note": {
-          "what": "Selected 5 OSS projects (Django, curl, OpenSSL, Pillow, Node.js) across Python, C, and JavaScript.",
-          "why": "These projects have rich, documented security-fix histories \u00e2\u20ac\u201d the raw material for building the answer key.",
-          "concept": "Git archaeology \u00e2\u20ac\u201d mining commit history to find where vulnerabilities were introduced and fixed.",
-          "next": "Mine Django's git history for >=10 pre-fix vulnerable code locations."
-        }
+        "tests_green": true
       },
       {
         "id": "step-002",
@@ -103,22 +69,7 @@
         "status": "done",
         "done_on": "2026-08-08",
         "commit_sha": null,
-        "commit_sha_note": "SHA derived from git log next run (commit includes this file)",
-        "tests_green": true,
-        "files_touched": [
-          "src/answer_key_miner.py",
-          "data/answer_key/django_seeds.json",
-          "data/answer_key/django.json",
-          "tests/test_answer_key.py",
-          ".project-meta/ledger.json",
-          ".project-meta/decisions.log"
-        ],
-        "layman_note": {
-          "what": "Built a reusable miner script and produced Django's answer key: 12 CVEs, 19 vulnerable file locations across 12 distinct CWE types.",
-          "why": "The answer key is ground truth \u00e2\u20ac\u201d without known-correct answers, there's no way to measure how accurately the AI triages alerts.",
-          "concept": "Git archaeology via API \u00e2\u20ac\u201d instead of cloning Django's 30k-commit repo, query GitHub's API for each fix commit's diff to find exactly which source files were patched.",
-          "next": "Mine curl's git history for >=10 pre-fix vulnerable spots (second answer-key entry)."
-        }
+        "tests_green": true
       },
       {
         "id": "step-003",
@@ -126,18 +77,7 @@
         "status": "done",
         "done_on": "2026-08-12",
         "commit_sha": "64458a4",
-        "tests_green": true,
-        "files_touched": [
-          "data/answer_key/curl_seeds.json",
-          "data/answer_key/curl.json",
-          "tests/test_answer_key.py"
-        ],
-        "layman_note": {
-          "what": "Mined 15 real CVEs from curl; 12 had code-level fixes, producing 24 vulnerable spots across 8 CWE types.",
-          "why": "curl is project 2 of 5. C memory bugs (UAF, double-free) are the classic triage-hard pattern.",
-          "concept": "Use-after-free (CWE-416): code accesses memory after it was freed. Classic C bug prevented by higher-level languages.",
-          "next": "Mine OpenSSL (project 3) for more C memory + crypto logic bugs."
-        }
+        "tests_green": true
       },
       {
         "id": "step-004",
@@ -145,75 +85,30 @@
         "status": "done",
         "done_on": "2026-08-14",
         "commit_sha": null,
+        "tests_green": true
+      },
+      {
+        "id": "step-005",
+        "title": "answer keys: projects 4 and 5 (Pillow + Node.js)",
+        "status": "done",
+        "done_on": "2026-08-18",
+        "commit_sha": null,
         "commit_sha_note": "SHA derived from git log post-push (commit includes this file)",
         "tests_green": true,
         "files_touched": [
-          "data/answer_key/openssl_seeds.json",
-          "data/answer_key/openssl.json",
+          "data/answer_key/pillow_seeds.json",
+          "data/answer_key/pillow.json",
+          "data/answer_key/nodejs_seeds.json",
+          "data/answer_key/nodejs.json",
           "tests/test_answer_key.py",
           ".project-meta/ledger.json",
           ".project-meta/decisions.log"
         ],
         "layman_note": {
-          "what": "Mined 15 real CVEs from OpenSSL; produced 34 vulnerable source-file locations across 10 CWE types.",
-          "why": "OpenSSL is project 3 of 5. Crypto logic bugs + NULL derefs test different context-curve behaviors than Django/curl.",
-          "concept": "NULL pointer dereference (CWE-476): code tries to use a pointer that points to nothing; instant crash, often triggerable remotely.",
-          "next": "Mine Pillow and Node.js (projects 4 and 5) to complete the answer key."
-        }
-      }
-    ],
-    "p2_general_cs": [
-      {
-        "id": "step-000",
-        "title": "scaffold + README + WALKTHROUGH + CI + frozen spec/plan + tests",
-        "status": "done",
-        "done_on": "2026-08-06",
-        "commit_sha": "bfb30824d308e198b1fc0250767d77ced5984a06",
-        "tests_green": true,
-        "files_touched": [
-          "README.md",
-          "docs/WALKTHROUGH.md",
-          "src/__init__.py",
-          "src/meta.py",
-          "tests/test_scaffold.py",
-          ".github/workflows/ci.yml",
-          "requirements.txt",
-          ".gitignore",
-          ".project-meta/spec.md",
-          ".project-meta/plan.json",
-          ".project-meta/ledger.json",
-          ".project-meta/decisions.log",
-          "data/.gitkeep",
-          "results/.gitkeep"
-        ],
-        "layman_note": {
-          "what": "Built the project skeleton: folders, README, walkthrough, 10 tests green, CI, frozen 21-step plan.",
-          "why": "Same principle as Track A \u00e2\u20ac\u201d start green, stay green.",
-          "concept": "Scaffold \u00e2\u20ac\u201d the empty-but-working skeleton built before any real logic.",
-          "next": "Download the NAB dataset (58 CSV files across 7 categories)."
-        }
-      },
-      {
-        "id": "step-001",
-        "title": "download NAB dataset and document its structure and categories",
-        "status": "done",
-        "done_on": "2026-08-07",
-        "commit_sha": "74b7991",
-        "tests_green": true,
-        "files_touched": [
-          "src/download_nab.py",
-          "tests/test_nab_data.py",
-          "docs/WALKTHROUGH.md",
-          ".gitignore",
-          ".github/workflows/ci.yml",
-          ".project-meta/ledger.json",
-          ".project-meta/decisions.log"
-        ],
-        "layman_note": {
-          "what": "Downloaded the full NAB dataset (58 CSVs, 7 categories, 9.1 MB) via a reusable download script.",
-          "why": "The benchmark data is the raw material for everything that follows.",
-          "concept": "Data ingestion \u00e2\u20ac\u201d fetching, organising, and validating a dataset.",
-          "next": "Implement the NAB scoring protocol."
+          "what": "Mined Pillow (15 CVEs, 40 spots, 8 CWE types) and Node.js (16 CVEs, 50 spots, 11 CWE types) to complete all 5 answer keys.",
+          "why": "This completes Phase 1 data collection — all 5 projects now have verified ground-truth vulnerability locations.",
+          "concept": "CWE diversity matters — injection bugs (Django), memory corruption (curl/OpenSSL/Pillow C extensions), auth bypass (Node.js TLS) each test different AI triage behaviors.",
+          "next": "Phase gate: verify totals across all 5 projects (>=30 spots, >=3 vuln types) and spot-check 3 entries via GitHub API."
         }
       }
     ]
@@ -223,20 +118,6 @@
     "step_id": null,
     "instruction_to_human": "(cleared)"
   },
-  "reconciliation_log": [
-    {
-      "date": "2026-08-06",
-      "ledger_said": "P1 step-000 commit_sha null, P2 stale, active_project p2_general_cs",
-      "code_was": "P1 HEAD at 94a0fd9, P2 HEAD at bfb3082 \u00e2\u20ac\u201d matched mirror",
-      "action": "Patched P1 commit_sha to 94a0fd9, synced P2 step-000. Executed step-001. Flipped active to p2_general_cs."
-    },
-    {
-      "date": "2026-08-08",
-      "ledger_said": "P1 step-001 commit_sha null (not yet patched), active p2_general_cs (stale \u00e2\u20ac\u201d mirror already flipped to p1_cyber after run 10)",
-      "code_was": "P1 HEAD at b60d68e (2 commits), P2 HEAD at 74b7991 (per mirror). Mirror: active p1_cyber, P1 pointer 2, P2 pointer 2.",
-      "action": "Patched P1 step-001 commit_sha to b60d68e. Synced P2 step-001 from mirror. Executed step-002 (Django answer key). Flipped active to p2_general_cs."
-    }
-  ],
   "invariants_last_run": {
     "github_identity_ok": true,
     "no_regression": true,
@@ -250,26 +131,38 @@
       "date": "2026-08-04",
       "run": 7,
       "outcome": "STEP_DONE",
-      "detail": "P1 step-000 bootstrap shipped: commit 94a0fd9."
+      "detail": "P1 step-000 bootstrap shipped."
     },
     {
       "date": "2026-08-06",
       "run": 9,
       "outcome": "STEP_DONE",
-      "detail": "P1 step-001: selected 5 OSS targets. Commit b60d68e. 13/13 green."
+      "detail": "P1 step-001: selected 5 OSS targets."
     },
     {
       "date": "2026-08-08",
       "run": 11,
       "outcome": "STEP_DONE",
-      "detail": "P1 step-002: Django answer-key miner. 12 CVEs, 19 vulnerable spots, 12 CWE types. Miner script (src/answer_key_miner.py) + seeds + answer key + 10 new tests (23/23 green). Reconciled in-repo ledger. Next: P2 step-002 (NAB scoring protocol)."
+      "detail": "P1 step-002: Django answer-key mined. 12 CVEs, 19 spots."
+    },
+    {
+      "date": "2026-08-12",
+      "run": 13,
+      "outcome": "STEP_DONE",
+      "detail": "P1 step-003: curl answer-key mined. 15 CVEs, 24 spots."
     },
     {
       "date": "2026-08-14",
       "run": 14,
       "outcome": "STEP_DONE",
-      "detail": "P1 step-004: OpenSSL answer-key mined. 15 CVEs, 34 vulnerable spots, 10 CWE types. 11 new tests (44/44 green). Next: P2 step-004."
+      "detail": "P1 step-004: OpenSSL answer-key mined. 15 CVEs, 34 spots."
+    },
+    {
+      "date": "2026-08-18",
+      "run": 18,
+      "outcome": "STEP_DONE",
+      "detail": "P1 step-005: Pillow (15 CVEs, 40 spots, 8 CWE types) + Node.js (16 CVEs, 50 spots, 11 CWE types). All 5 answer keys complete. 60/60 tests green. Next: phase gate (step-006)."
     }
   ],
-  "last_run_date": "2026-08-14"
+  "last_run_date": "2026-08-18"
 }

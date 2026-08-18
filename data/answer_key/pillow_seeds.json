@@ -1,0 +1,137 @@
+[
+  {
+    "cve_id": "CVE-2026-59199",
+    "description": "Heap out-of-bounds write in Image.paste()/Image.crop() via signed integer overflow in paste box dimensions",
+    "vuln_type": "Heap Buffer Overflow",
+    "cwe_id": "CWE-787",
+    "severity": "high",
+    "fix_commit_sha": "ceefc348eb3c3844c7f9796ef2cc3a7dd5fbba7b",
+    "primary_source": "https://github.com/python-pillow/Pillow/security/advisories/GHSA-6r8x-57c9-28j4"
+  },
+  {
+    "cve_id": "CVE-2026-59197",
+    "description": "Heap out-of-bounds write in ImageFilter.RankFilter via integer overflow in filter size validation",
+    "vuln_type": "Integer Overflow to Buffer Overflow",
+    "cwe_id": "CWE-190",
+    "severity": "high",
+    "fix_commit_sha": "853ece9ed20c5d80ffa22dce8698869a9da8bbfc",
+    "primary_source": "https://github.com/python-pillow/Pillow/security/advisories/GHSA-xj96-63gp-2gmr"
+  },
+  {
+    "cve_id": "CVE-2026-59198",
+    "description": "TGA RLE encoder serializes up to ~57 KB of adjacent heap data into generated images (information leak)",
+    "vuln_type": "Out-of-bounds Read / Information Leak",
+    "cwe_id": "CWE-125",
+    "severity": "medium",
+    "fix_commit_sha": "eada3cbd7fb9963ee90673fb7b5270124a0d5f4b",
+    "primary_source": "https://github.com/python-pillow/Pillow/security/advisories/GHSA-fj7v-r99m-22gq"
+  },
+  {
+    "cve_id": "CVE-2026-54058",
+    "description": "Out-of-bounds read via attacker-controlled row stride on mmap path (McIdas loader)",
+    "vuln_type": "Out-of-bounds Read",
+    "cwe_id": "CWE-125",
+    "severity": "high",
+    "fix_commit_sha": "6a8de891fb00968e5ea79bfa84368ed90b3cfc1d",
+    "primary_source": "https://github.com/python-pillow/Pillow/security/advisories/GHSA-62p4-gmf7-7g93"
+  },
+  {
+    "cve_id": "CVE-2026-55380",
+    "description": "GdImageFile._open() accepts image dimensions without decompression bomb check — memory exhaustion DoS",
+    "vuln_type": "Uncontrolled Resource Consumption",
+    "cwe_id": "CWE-789",
+    "severity": "high",
+    "fix_commit_sha": "f39b0ae6624eb2d7c5c5d651d9bb5fdbd96a8675",
+    "primary_source": "https://github.com/python-pillow/Pillow/security/advisories/GHSA-phj9-mv4w-65pm"
+  },
+  {
+    "cve_id": "CVE-2026-54060",
+    "description": "FontFile.compile() calls Image.new() without decompression bomb check — memory exhaustion DoS",
+    "vuln_type": "Uncontrolled Resource Consumption",
+    "cwe_id": "CWE-789",
+    "severity": "high",
+    "fix_commit_sha": "0a263e6264aa5399988d9acd3bbfbca2ca3ec77d",
+    "primary_source": "https://github.com/python-pillow/Pillow/security/advisories/GHSA-5x94-69rx-g8h2"
+  },
+  {
+    "cve_id": "CVE-2026-59203",
+    "description": "EpsImagePlugin negative %%BeginBinary byte count causes infinite loop denial of service",
+    "vuln_type": "Infinite Loop DoS",
+    "cwe_id": "CWE-835",
+    "severity": "medium",
+    "fix_commit_sha": "03992618118b4a76b6163cd72ab5ecd684133b83",
+    "primary_source": "https://github.com/python-pillow/Pillow/security/advisories/GHSA-pg7v-jwj7-p798"
+  },
+  {
+    "cve_id": "CVE-2026-55798",
+    "description": "WindowsViewer.get_command() OS command injection via unescaped shell path variable expansion",
+    "vuln_type": "OS Command Injection",
+    "cwe_id": "CWE-78",
+    "severity": "medium",
+    "fix_commit_sha": "88194166691b7b603529b8b036ab3ab9cedd2de4",
+    "primary_source": "https://github.com/python-pillow/Pillow/security/advisories/GHSA-4x4j-2g7c-83w6"
+  },
+  {
+    "cve_id": "CVE-2026-42311",
+    "description": "OOB write with invalid PSD tile extents via integer overflow in tile offset calculation",
+    "vuln_type": "Integer Overflow to Buffer Overflow",
+    "cwe_id": "CWE-787",
+    "severity": "high",
+    "fix_commit_sha": "54ba4db542ad3c7b918812a4e2d69c27735a3199",
+    "primary_source": "https://github.com/python-pillow/Pillow/security/advisories/GHSA-pwv6-vv43-88gr"
+  },
+  {
+    "cve_id": "CVE-2026-42308",
+    "description": "Integer overflow when processing fonts — extents added together overflow causing heap corruption",
+    "vuln_type": "Integer Overflow",
+    "cwe_id": "CWE-190",
+    "severity": "high",
+    "fix_commit_sha": "58f9a1d166dcb0c274807d4423522d205b0c35ea",
+    "primary_source": "https://github.com/python-pillow/Pillow/security/advisories/GHSA-wjx4-4jcj-g98j"
+  },
+  {
+    "cve_id": "CVE-2026-42309",
+    "description": "Heap buffer overflow with nested list coordinates — non-numeric elements bypass validation",
+    "vuln_type": "Heap Buffer Overflow",
+    "cwe_id": "CWE-122",
+    "severity": "high",
+    "fix_commit_sha": "cf6de8ca9b23e714aa5310e1c791eda66fc0b670",
+    "primary_source": "https://github.com/python-pillow/Pillow/security/advisories/GHSA-5xmw-vc9v-4wf2"
+  },
+  {
+    "cve_id": "CVE-2026-40192",
+    "description": "FITS GZIP decompression bomb — unbounded read from gzip-decompressed data causes memory exhaustion",
+    "vuln_type": "Decompression Bomb DoS",
+    "cwe_id": "CWE-400",
+    "severity": "high",
+    "fix_commit_sha": "3cb854e8b2bab43f40e342e665f9340d861aa628",
+    "primary_source": "https://github.com/python-pillow/Pillow/security/advisories/GHSA-whj4-6x5x-4v2j"
+  },
+  {
+    "cve_id": "CVE-2026-59204",
+    "description": "JPEG2000 tiled decode retains growing scratch buffer — memory exhaustion via crafted image",
+    "vuln_type": "Uncontrolled Resource Consumption",
+    "cwe_id": "CWE-400",
+    "severity": "medium",
+    "fix_commit_sha": "13ada41172142f2fd9f0906f615a00ea623a11ca",
+    "primary_source": "https://github.com/python-pillow/Pillow/security/advisories/GHSA-vjc4-5qp5-m44j"
+  },
+  {
+    "cve_id": "CVE-2025-48379",
+    "description": "Write buffer overflow on BCn (DDS) encoding — writing sufficiently large image overflows encode buffer",
+    "vuln_type": "Heap Buffer Overflow",
+    "cwe_id": "CWE-122",
+    "severity": "high",
+    "fix_commit_sha": "ef98b3510e3e4f14b547762764813d7e5ca3c5a4",
+    "primary_source": "https://github.com/python-pillow/Pillow/security/advisories/GHSA-xg8h-j46f-w952"
+  },
+  {
+    "cve_id": "CVE-2026-59200",
+    "description": "Decompression bomb DoS via PdfParser.PdfStream.decode() — memoryview buffer not released on close",
+    "vuln_type": "Uncontrolled Resource Consumption",
+    "cwe_id": "CWE-400",
+    "severity": "high",
+    "fix_commit_sha": "b656f900b482a5ec46346fc3c2433d01d9a159f7",
+    "primary_source": "https://github.com/python-pillow/Pillow/security/advisories/GHSA-jjj6-mw9f-p565"
+  }
+]
