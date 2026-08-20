@@ -7,7 +7,7 @@
   "github_identity_gate": {
     "_comment": "Rule 0a",
     "expected_account": "vir-cipher",
-    "last_verified": "2026-08-18",
+    "last_verified": "2026-08-20",
     "last_verified_by": "gh auth status (vir-cipher active)"
   },
   "projects": {
@@ -21,9 +21,9 @@
       "novelty_gate_passed": true,
       "standout_hook": "First empirical context-optimality curve (hypothesis under test)",
       "plan_total_steps": 21,
-      "step_pointer": 6,
+      "step_pointer": 7,
       "last_green_tag": null,
-      "ci_green_last_seen": "2026-08-18",
+      "ci_green_last_seen": "2026-08-20",
       "build_cadence": "daily",
       "head_sha_last_seen": null
     },
@@ -44,7 +44,7 @@
     }
   },
   "active_project": "p2_general_cs",
-  "active_project_note": "P1 step-005 shipped 2026-08-18; next run builds P2 step-005.",
+  "active_project_note": "P1 step-006 shipped 2026-08-20; next run builds P2 step-006.",
   "steps": {
     "p1_cyber": [
       {
@@ -106,9 +106,30 @@
         ],
         "layman_note": {
           "what": "Mined Pillow (15 CVEs, 40 spots, 8 CWE types) and Node.js (16 CVEs, 50 spots, 11 CWE types) to complete all 5 answer keys.",
-          "why": "This completes Phase 1 data collection — all 5 projects now have verified ground-truth vulnerability locations.",
-          "concept": "CWE diversity matters — injection bugs (Django), memory corruption (curl/OpenSSL/Pillow C extensions), auth bypass (Node.js TLS) each test different AI triage behaviors.",
+          "why": "This completes Phase 1 data collection \u00e2\u20ac\u201d all 5 projects now have verified ground-truth vulnerability locations.",
+          "concept": "CWE diversity matters \u00e2\u20ac\u201d injection bugs (Django), memory corruption (curl/OpenSSL/Pillow C extensions), auth bypass (Node.js TLS) each test different AI triage behaviors.",
           "next": "Phase gate: verify totals across all 5 projects (>=30 spots, >=3 vuln types) and spot-check 3 entries via GitHub API."
+        }
+      },
+      {
+        "id": "step-006",
+        "title": "Phase 1 gate: totals + spot-check 3 entries via GitHub API",
+        "status": "done",
+        "done_on": "2026-08-20",
+        "commit_sha": null,
+        "commit_sha_note": "SHA derived from git log post-push",
+        "tests_green": true,
+        "files_touched": [
+          "data/answer_key/phase1_summary.json",
+          "tests/test_phase1_gate.py",
+          ".project-meta/ledger.json",
+          ".project-meta/decisions.log"
+        ],
+        "layman_note": {
+          "what": "Verified all 5 answer keys: 167 spots, 70 CVEs, 34 CWE types. Spot-checked 3 entries (Django, curl, OpenSSL) via GitHub API \u2014 all confirmed.",
+          "why": "Phase 1 gate ensures the ground-truth data is solid before we build the scanner on top of it.",
+          "concept": "A phase gate is a quality checkpoint \u2014 you don't move forward until the data passes minimum thresholds, like checking ingredients before you start cooking.",
+          "next": "Phase 2: build a Semgrep scanner wrapper to find vulnerabilities automatically, then compare its alerts against our verified answer key."
         }
       }
     ]
@@ -162,7 +183,13 @@
       "run": 18,
       "outcome": "STEP_DONE",
       "detail": "P1 step-005: Pillow (15 CVEs, 40 spots, 8 CWE types) + Node.js (16 CVEs, 50 spots, 11 CWE types). All 5 answer keys complete. 60/60 tests green. Next: phase gate (step-006)."
+    },
+    {
+      "date": "2026-08-20",
+      "run": 20,
+      "outcome": "STEP_DONE",
+      "detail": "P1 step-006: Phase 1 gate passed. 167 spots, 34 CWE types, 3/3 spot-checks via GitHub API. 66/66 tests green."
     }
   ],
-  "last_run_date": "2026-08-18"
+  "last_run_date": "2026-08-20"
 }

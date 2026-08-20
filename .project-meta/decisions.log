@@ -29,3 +29,13 @@ step-005: Pillow + Node.js answer keys complete
 - All CVE-to-commit mappings verified via gh api; every seed has a real fix SHA  
 - Phase 1 answer-key totals: 5 projects, 73 CVEs, 167 spots  
  
+
+## 2026-08-20: step-006 — Phase 1 gate verified
+- Gate thresholds: >=30 spots (got 167), >=3 CWE types (got 34), 3/3 spot-checks
+- Spot-checked via `gh api /repos/{repo}/commits/{sha}`:
+  1. Django CVE-2026-15307: commit exists, django/contrib/gis/db/models/fields.py in diff ✓
+  2. curl CVE-2026-9080: commit exists, lib/multi_ev.c in diff ✓
+  3. OpenSSL CVE-2026-45447: commit exists, crypto/pkcs7/pk7_smime.c in diff ✓
+- Results persisted in data/answer_key/phase1_summary.json
+- 6 new gate tests in tests/test_phase1_gate.py; total 66/66 green
+- Phase 1 COMPLETE. Phase 2 (Semgrep scanner baseline) starts next P1 run.

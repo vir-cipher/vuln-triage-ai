@@ -1,0 +1,56 @@
+{
+  "phase": 1,
+  "gate_step": "step-006",
+  "verified_on": "2026-08-20",
+  "projects": ["django", "curl", "openssl", "Pillow", "node"],
+  "totals": {
+    "projects": 5,
+    "total_spots": 167,
+    "total_cves": 70,
+    "unique_cwe_ids": 34
+  },
+  "per_project": {
+    "django":  {"cves": 12, "spots": 19, "cwe_types": 12},
+    "curl":    {"cves": 12, "spots": 24, "cwe_types": 8},
+    "openssl": {"cves": 15, "spots": 34, "cwe_types": 10},
+    "Pillow":  {"cves": 15, "spots": 40, "cwe_types": 8},
+    "node":    {"cves": 16, "spots": 50, "cwe_types": 11}
+  },
+  "gate_thresholds": {
+    "min_spots": 30,
+    "min_vuln_types": 3,
+    "spot_checks_required": 3
+  },
+  "spot_checks": [
+    {
+      "project": "django",
+      "cve": "CVE-2026-15307",
+      "fix_sha": "39b3e2d0c743a338def6c473086ebc06865e86b6",
+      "file": "django/contrib/gis/db/models/fields.py",
+      "commit_exists": true,
+      "file_in_diff": true,
+      "commit_msg_excerpt": "Fixed CVE-2026-15307 -- Blocked raster strings and dicts in spatial lookups"
+    },
+    {
+      "project": "curl",
+      "cve": "CVE-2026-9080",
+      "fix_sha": "5ab34cba42e4ee4282fe8bab43f311d51b9bf9bd",
+      "file": "lib/multi_ev.c",
+      "commit_exists": true,
+      "file_in_diff": true,
+      "commit_msg_excerpt": "multi: handle pause in multi socket callback"
+    },
+    {
+      "project": "openssl",
+      "cve": "CVE-2026-45447",
+      "fix_sha": "f4129fbe3cde786d363510069fe297234f99be8f",
+      "file": "crypto/pkcs7/pk7_smime.c",
+      "commit_exists": true,
+      "file_in_diff": true,
+      "commit_msg_excerpt": "Fix possible use-after-free in OpenSSL PKCS7_verify() Fixes CVE-2026-45447"
+    }
+  ],
+  "spot_checks_passed": 3,
+  "spot_checks_total": 3,
+  "gate_passed": true
+}
