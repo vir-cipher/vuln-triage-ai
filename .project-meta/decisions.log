@@ -39,3 +39,10 @@ step-005: Pillow + Node.js answer keys complete
 - Results persisted in data/answer_key/phase1_summary.json
 - 6 new gate tests in tests/test_phase1_gate.py; total 66/66 green
 - Phase 1 COMPLETE. Phase 2 (Semgrep scanner baseline) starts next P1 run.
+
+2026-08-22 — audit reconciliation (6 findings, 22-Aug-2026)
+  F2 MODERATE: backfilled null commit_sha — step-002→69b17b8, step-004→0ad9b78, step-005→24f7940, step-006→6cea325 (all from git log --oneline).
+  F3 MODERATE: synced cross-project P2 metadata — step_pointer=7, head_sha=aaa28d6, ci_green=2026-08-21, last_green_tag=green-nab-anomaly-detector-1.
+  F4 MODERATE: tagged green-vuln-triage-ai-1 at 6cea325 (7 green P1 steps). last_green_tag updated.
+  F6 LOW: p1_cyber.head_sha_last_seen set to 6cea325 (was null).
+  Rule 0 reconciliation: ledger disagrees with code → code wins → ledger patched.

@@ -22,10 +22,10 @@
       "standout_hook": "First empirical context-optimality curve (hypothesis under test)",
       "plan_total_steps": 21,
       "step_pointer": 7,
-      "last_green_tag": null,
+      "last_green_tag": "green-vuln-triage-ai-1",
       "ci_green_last_seen": "2026-08-20",
       "build_cadence": "daily",
-      "head_sha_last_seen": null
+      "head_sha_last_seen": "6cea325"
     },
     "p2_general_cs": {
       "id": "s1-gencs",
@@ -36,15 +36,15 @@
       "plan_immutable": true,
       "novelty_gate_passed": true,
       "plan_total_steps": 21,
-      "step_pointer": 5,
-      "last_green_tag": null,
-      "head_sha_last_seen": "44c73fc",
-      "ci_green_last_seen": "2026-08-17",
+      "step_pointer": 7,
+      "last_green_tag": "green-nab-anomaly-detector-1",
+      "head_sha_last_seen": "aaa28d6",
+      "ci_green_last_seen": "2026-08-21",
       "build_cadence": "daily"
     }
   },
-  "active_project": "p2_general_cs",
-  "active_project_note": "P1 step-006 shipped 2026-08-20; next run builds P2 step-006.",
+  "active_project": "p1_cyber",
+  "active_project_note": "P2 step-006 shipped 2026-08-21; next run builds P1 step-007.",
   "steps": {
     "p1_cyber": [
       {
@@ -68,7 +68,7 @@
         "title": "answer-key miner v1: git archaeology of fix commits -> data/answer_key/django.json",
         "status": "done",
         "done_on": "2026-08-08",
-        "commit_sha": null,
+        "commit_sha": "69b17b8",
         "tests_green": true
       },
       {
@@ -84,7 +84,7 @@
         "title": "answer key: OpenSSL (project 3)",
         "status": "done",
         "done_on": "2026-08-14",
-        "commit_sha": null,
+        "commit_sha": "0ad9b78",
         "tests_green": true
       },
       {
@@ -92,8 +92,7 @@
         "title": "answer keys: projects 4 and 5 (Pillow + Node.js)",
         "status": "done",
         "done_on": "2026-08-18",
-        "commit_sha": null,
-        "commit_sha_note": "SHA derived from git log post-push (commit includes this file)",
+        "commit_sha": "24f7940",
         "tests_green": true,
         "files_touched": [
           "data/answer_key/pillow_seeds.json",
@@ -106,8 +105,8 @@
         ],
         "layman_note": {
           "what": "Mined Pillow (15 CVEs, 40 spots, 8 CWE types) and Node.js (16 CVEs, 50 spots, 11 CWE types) to complete all 5 answer keys.",
-          "why": "This completes Phase 1 data collection \u00e2\u20ac\u201d all 5 projects now have verified ground-truth vulnerability locations.",
-          "concept": "CWE diversity matters \u00e2\u20ac\u201d injection bugs (Django), memory corruption (curl/OpenSSL/Pillow C extensions), auth bypass (Node.js TLS) each test different AI triage behaviors.",
+          "why": "This completes Phase 1 data collection â€” all 5 projects now have verified ground-truth vulnerability locations.",
+          "concept": "CWE diversity matters â€” injection bugs (Django), memory corruption (curl/OpenSSL/Pillow C extensions), auth bypass (Node.js TLS) each test different AI triage behaviors.",
           "next": "Phase gate: verify totals across all 5 projects (>=30 spots, >=3 vuln types) and spot-check 3 entries via GitHub API."
         }
       },
@@ -116,8 +115,7 @@
         "title": "Phase 1 gate: totals + spot-check 3 entries via GitHub API",
         "status": "done",
         "done_on": "2026-08-20",
-        "commit_sha": null,
-        "commit_sha_note": "SHA derived from git log post-push",
+        "commit_sha": "6cea325",
         "tests_green": true,
         "files_touched": [
           "data/answer_key/phase1_summary.json",
@@ -126,9 +124,9 @@
           ".project-meta/decisions.log"
         ],
         "layman_note": {
-          "what": "Verified all 5 answer keys: 167 spots, 70 CVEs, 34 CWE types. Spot-checked 3 entries (Django, curl, OpenSSL) via GitHub API \u2014 all confirmed.",
+          "what": "Verified all 5 answer keys: 167 spots, 70 CVEs, 34 CWE types. Spot-checked 3 entries (Django, curl, OpenSSL) via GitHub API — all confirmed.",
           "why": "Phase 1 gate ensures the ground-truth data is solid before we build the scanner on top of it.",
-          "concept": "A phase gate is a quality checkpoint \u2014 you don't move forward until the data passes minimum thresholds, like checking ingredients before you start cooking.",
+          "concept": "A phase gate is a quality checkpoint — you don't move forward until the data passes minimum thresholds, like checking ingredients before you start cooking.",
           "next": "Phase 2: build a Semgrep scanner wrapper to find vulnerabilities automatically, then compare its alerts against our verified answer key."
         }
       }
