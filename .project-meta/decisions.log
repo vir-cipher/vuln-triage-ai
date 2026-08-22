@@ -46,3 +46,11 @@ step-005: Pillow + Node.js answer keys complete
   F4 MODERATE: tagged green-vuln-triage-ai-1 at 6cea325 (7 green P1 steps). last_green_tag updated.
   F6 LOW: p1_cyber.head_sha_last_seen set to 6cea325 (was null).
   Rule 0 reconciliation: ledger disagrees with code → code wins → ledger patched.
+
+2026-08-22 · step-007 · Built src/run_scanner.py: fetches the pre-fix vulnerable snapshot named in an answer key (via `gh api repos/{repo}/contents/{path}?ref={sha}`, deduped by (parent_sha, file)) into data/snapshots/<project>/, then scans it with Semgrep using a locally-pinned ruleset.
+2026-08-22 · step-007 · Ruleset src/rules/security_rules.yml (10 rules, python-only for now) is committed in-repo rather than using `--config=p/security-audit` from Semgrep's online registry, so a scan today and a scan months from now on the same code give byte-identical output (registry rulesets can change; that would silently break Rule 2/reproducibility).
+2026-08-22 · step-007 · data/snapshots/ is gitignored, not committed: it holds unmodified third-party OSS source (Django) fetched from a pinned commit SHA, so it is fully reproducible without needing to redistribute upstream code in this repo. Mirrors the P2 precedent (data/nab/ gitignored, step-001 decisions.log 2026-08-07).
+2026-08-22 · step-007 · Ran the scanner on the Django vulnerable snapshot (19 files across 12 CVEs): 10 alerts (SQL string formatting, mark_safe/format_html, pickle.load, weak hash, hardcoded-secret patterns). Verified determinism by running twice and diffing byte-for-byte (`fc` reported no differences).
+2026-08-22 · step-007 · semgrep added to requirements.txt as a CLI dependency (Rule 7 -- first step that uses it). It is invoked via subprocess, never imported as a Python module, so the test suite does not require it to be installed to pass -- only to run a fresh scan.
+2026-08-22 · step-007 · No comparison against the answer key yet (that is step-009's job, the baseline precision/recall scorer). This step only proves the scanner pipeline runs end-to-end and deterministically.
+2026-08-22 · step-007 · Step-007 commit_sha=null (same pre-declaration convention as prior steps): next run patches it via git log.

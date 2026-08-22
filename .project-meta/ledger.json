@@ -21,11 +21,11 @@
       "novelty_gate_passed": true,
       "standout_hook": "First empirical context-optimality curve (hypothesis under test)",
       "plan_total_steps": 21,
-      "step_pointer": 7,
+      "step_pointer": 8,
       "last_green_tag": "green-vuln-triage-ai-1",
-      "ci_green_last_seen": "2026-08-20",
+      "ci_green_last_seen": "2026-08-22",
       "build_cadence": "daily",
-      "head_sha_last_seen": "6cea325"
+      "head_sha_last_seen": null
     },
     "p2_general_cs": {
       "id": "s1-gencs",
@@ -43,8 +43,8 @@
       "build_cadence": "daily"
     }
   },
-  "active_project": "p1_cyber",
-  "active_project_note": "P2 step-006 shipped 2026-08-21; next run builds P1 step-007.",
+  "active_project": "p2_general_cs",
+  "active_project_note": "P1 step-007 shipped 2026-08-22; next run builds P2 step-007.",
   "steps": {
     "p1_cyber": [
       {
@@ -129,6 +129,30 @@
           "concept": "A phase gate is a quality checkpoint — you don't move forward until the data passes minimum thresholds, like checking ingredients before you start cooking.",
           "next": "Phase 2: build a Semgrep scanner wrapper to find vulnerabilities automatically, then compare its alerts against our verified answer key."
         }
+      },
+      {
+        "id": "step-007",
+        "title": "src/run_scanner.py Semgrep wrapper; scan vulnerable snapshot of project 1",
+        "status": "done",
+        "done_on": "2026-08-22",
+        "commit_sha": null,
+        "tests_green": true,
+        "files_touched": [
+          "src/run_scanner.py",
+          "src/rules/security_rules.yml",
+          "data/alerts/django.json",
+          "tests/test_scanner.py",
+          "requirements.txt",
+          ".gitignore",
+          ".project-meta/ledger.json",
+          ".project-meta/decisions.log"
+        ],
+        "layman_note": {
+          "what": "Built a Semgrep wrapper that fetches Django's pre-fix vulnerable files (via the answer key's parent commit SHAs) and scans them with a locally-pinned 10-rule ruleset. Produced 10 deterministic alerts.",
+          "why": "Phase 2 needs a real scanner's output to compare against the verified answer key later (Phase 4) -- this step gets that scanner running end to end on the first project.",
+          "concept": "The ruleset lives in the repo instead of pulling from Semgrep's online registry, so a scan today and a scan in six months on the same code give byte-identical results -- reproducibility, not just correctness.",
+          "next": "Step-008: run the same scanner on the other 4 vulnerable snapshots (curl, OpenSSL, Pillow, Node.js)."
+        }
       }
     ]
   },
@@ -187,7 +211,13 @@
       "run": 20,
       "outcome": "STEP_DONE",
       "detail": "P1 step-006: Phase 1 gate passed. 167 spots, 34 CWE types, 3/3 spot-checks via GitHub API. 66/66 tests green."
+    },
+    {
+      "date": "2026-08-22",
+      "run": 22,
+      "outcome": "STEP_DONE",
+      "detail": "P1 step-007: Semgrep scanner wrapper (src/run_scanner.py) + pinned local ruleset (10 rules). Scanned Django vulnerable snapshot (19 files) -> 10 deterministic alerts. 73/73 tests green."
     }
   ],
-  "last_run_date": "2026-08-20"
+  "last_run_date": "2026-08-22"
 }

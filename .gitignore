@@ -6,3 +6,9 @@ venv/
 .env
 *.egg-info/
 .DS_Store
+.project-meta/run.lock
+
+# Fetched vulnerable-snapshot source (third-party OSS code, e.g. Django) --
+# not ours to redistribute wholesale. Re-fetched deterministically each run
+# via src/run_scanner.py from the pinned parent_commit_sha in the answer key.
+data/snapshots/

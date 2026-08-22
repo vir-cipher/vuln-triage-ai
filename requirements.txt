@@ -1,1 +1,7 @@
 pytest>=8
+
+# semgrep: CLI tool invoked via subprocess by src/run_scanner.py (Phase 2,
+# step-007+). Not imported as a Python library, so it is NOT required for
+# the test suite to pass in CI -- only to actually run a fresh scan.
+# Install: pip install semgrep
+semgrep>=1.174

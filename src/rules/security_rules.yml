@@ -1,0 +1,121 @@
+# Pinned local Semgrep ruleset — Phase 2 scanner baseline (step-007).
+#
+# Kept in-repo (rather than `--config=p/security-audit` from the registry)
+# so scans are byte-for-byte reproducible forever: the registry can change
+# its rules over time, which would silently break Rule 2 ("verifiable
+# artifact") and the step-007 gate ("alert JSON produced deterministically").
+#
+# Deliberately generic, not tuned to the answer key — the experiment's
+# whole point (Phase 2/4) is measuring how a normal scanner's precision
+# and recall compare to verified ground truth. See docs/WALKTHROUGH.md.
+rules:
+  - id: python-eval-use
+    languages: [python]
+    severity: ERROR
+    message: >-
+      Use of eval() on data that may be attacker-influenced can lead to
+      arbitrary code execution (CWE-95).
+    patterns:
+      - pattern: eval(...)
+
+  - id: python-exec-use
+    languages: [python]
+    severity: ERROR
+    message: >-
+      Use of exec() on data that may be attacker-influenced can lead to
+      arbitrary code execution (CWE-95).
+    patterns:
+      - pattern: exec(...)
+
+  - id: python-sql-string-format
+    languages: [python]
+    severity: ERROR
+    message: >-
+      Building SQL with string formatting/concatenation risks SQL
+      injection (CWE-89). Use parameterized queries instead.
+    patterns:
+      - pattern-either:
+          - pattern: $CURSOR.execute("..." % ...)
+          - pattern: $CURSOR.execute(f"...")
+          - pattern: $CURSOR.execute("..." + ...)
+
+  - id: python-os-system-shell
+    languages: [python]
+    severity: ERROR
+    message: >-
+      os.system() or subprocess with shell=True on unsanitized input
+      risks command injection (CWE-78).
+    patterns:
+      - pattern-either:
+          - pattern: os.system(...)
+          - pattern: subprocess.$FUNC(..., shell=True, ...)
+
+  - id: python-pickle-load
+    languages: [python]
+    severity: WARNING
+    message: >-
+      pickle.load()/loads() on untrusted data allows arbitrary code
+      execution on deserialization (CWE-502).
+    patterns:
+      - pattern-either:
+          - pattern: pickle.load(...)
+          - pattern: pickle.loads(...)
+
+  - id: python-mark-safe-format
+    languages: [python]
+    severity: WARNING
+    message: >-
+      mark_safe()/format_html() bypasses Django's autoescaping; if the
+      input includes unescaped user data this is XSS (CWE-79).
+    patterns:
+      - pattern-either:
+          - pattern: mark_safe(...)
+          - pattern: format_html(...)
+
+  - id: python-yaml-unsafe-load
+    languages: [python]
+    severity: ERROR
+    message: >-
+      yaml.load() without a safe Loader can execute arbitrary code from
+      untrusted YAML (CWE-502).
+    patterns:
+      - pattern: yaml.load($X)
+
+  - id: python-hardcoded-secret
+    languages: [python]
+    severity: WARNING
+    message: >-
+      Possible hardcoded credential/secret (CWE-798). Load secrets from
+      environment or a secret manager instead.
+    patterns:
+      - pattern: $VAR = "..."
+      - metavariable-regex:
+          metavariable: $VAR
+          regex: (?i).*(password|secret|api_key|token).*
+
+  - id: python-weak-hash-md5
+    languages: [python]
+    severity: WARNING
+    message: >-
+      MD5/SHA1 are not appropriate for password hashing or integrity of
+      security-sensitive data (CWE-327).
+    patterns:
+      - pattern-either:
+          - pattern: hashlib.md5(...)
+          - pattern: hashlib.sha1(...)
+
+  - id: python-requests-user-url-ssrf
+    languages: [python]
+    severity: WARNING
+    message: >-
+      Making an HTTP request to a URL that is not a hardcoded literal
+      risks SSRF (CWE-918) if the destination is not validated against
+      an allowlist.
+    patterns:
+      - pattern-either:
+          - pattern: requests.get($URL, ...)
+          - pattern: requests.post($URL, ...)
+          - pattern: urllib.request.urlopen($URL, ...)
+      - metavariable-regex:
+          metavariable: $URL
+          regex: ^[a-zA-Z_]

@@ -1,0 +1,87 @@
+{
+  "snapshot_dir": "data/snapshots/django",
+  "ruleset": "src/rules/security_rules.yml",
+  "total_alerts": 10,
+  "alerts": [
+    {
+      "check_id": "src.rules.python-sql-string-format",
+      "file": "972dbdd4/django/contrib/gis/db/backends/postgis/operations.py",
+      "start_line": 336,
+      "end_line": 336,
+      "message": "Building SQL with string formatting/concatenation risks SQL injection (CWE-89). Use parameterized queries instead.",
+      "severity": "ERROR"
+    },
+    {
+      "check_id": "src.rules.python-mark-safe-format",
+      "file": "9e4a3f18/django/contrib/admin/utils.py",
+      "start_line": 172,
+      "end_line": 177,
+      "message": "mark_safe()/format_html() bypasses Django's autoescaping; if the input includes unescaped user data this is XSS (CWE-79).",
+      "severity": "WARNING"
+    },
+    {
+      "check_id": "src.rules.python-mark-safe-format",
+      "file": "9e4a3f18/django/contrib/admin/utils.py",
+      "start_line": 465,
+      "end_line": 465,
+      "message": "mark_safe()/format_html() bypasses Django's autoescaping; if the input includes unescaped user data this is XSS (CWE-79).",
+      "severity": "WARNING"
+    },
+    {
+      "check_id": "src.rules.python-mark-safe-format",
+      "file": "9e4a3f18/django/contrib/admin/utils.py",
+      "start_line": 467,
+      "end_line": 467,
+      "message": "mark_safe()/format_html() bypasses Django's autoescaping; if the input includes unescaped user data this is XSS (CWE-79).",
+      "severity": "WARNING"
+    },
+    {
+      "check_id": "src.rules.python-pickle-load",
+      "file": "b1444d9a/django/core/cache/backends/filebased.py",
+      "start_line": 37,
+      "end_line": 37,
+      "message": "pickle.load()/loads() on untrusted data allows arbitrary code execution on deserialization (CWE-502).",
+      "severity": "WARNING"
+    },
+    {
+      "check_id": "src.rules.python-pickle-load",
+      "file": "b1444d9a/django/core/cache/backends/filebased.py",
+      "start_line": 70,
+      "end_line": 70,
+      "message": "pickle.load()/loads() on untrusted data allows arbitrary code execution on deserialization (CWE-502).",
+      "severity": "WARNING"
+    },
+    {
+      "check_id": "src.rules.python-weak-hash-md5",
+      "file": "b1444d9a/django/core/cache/backends/filebased.py",
+      "start_line": 136,
+      "end_line": 136,
+      "message": "MD5/SHA1 are not appropriate for password hashing or integrity of security-sensitive data (CWE-327).",
+      "severity": "WARNING"
+    },
+    {
+      "check_id": "src.rules.python-pickle-load",
+      "file": "b1444d9a/django/core/cache/backends/filebased.py",
+      "start_line": 154,
+      "end_line": 154,
+      "message": "pickle.load()/loads() on untrusted data allows arbitrary code execution on deserialization (CWE-502).",
+      "severity": "WARNING"
+    },
+    {
+      "check_id": "src.rules.python-hardcoded-secret",
+      "file": "fcbbb1f9/django/conf/global_settings.py",
+      "start_line": 215,
+      "end_line": 215,
+      "message": "Possible hardcoded credential/secret (CWE-798). Load secrets from environment or a secret manager instead.",
+      "severity": "WARNING"
+    },
+    {
+      "check_id": "src.rules.python-hardcoded-secret",
+      "file": "fcbbb1f9/django/conf/global_settings.py",
+      "start_line": 279,
+      "end_line": 279,
+      "message": "Possible hardcoded credential/secret (CWE-798). Load secrets from environment or a secret manager instead.",
+      "severity": "WARNING"
+    }
+  ]
+}
